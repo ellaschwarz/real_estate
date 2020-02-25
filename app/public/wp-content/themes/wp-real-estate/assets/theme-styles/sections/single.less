@@ -1,0 +1,101 @@
+/* Single Posts Area */
+#primary-mono {
+  padding: 0 10px;
+  padding-left: 20px;
+  overflow: auto;
+  @media screen and (max-width:767px) {
+    padding-left: 10px;
+  }
+  h1.entry-title {
+    font-weight: 300;
+    color: darken(@content,15%);
+    font-size: 20px;
+    margin-top: 0px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px;
+    padding-left: 0;
+    margin-bottom: 0px;
+    &:after {
+      content: "";
+      display: block;
+      width: 12%;
+      height: 3px;
+      margin-top: 17px;
+      background: darken(@background,10%);
+    }
+  }
+  .entry-meta {
+    margin-top: 5px;
+    font-size: 13px;
+    color: lighten(@content, 6%);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .entry-meta, .entry-footer {
+    padding-bottom: 7px;
+    overflow: auto;
+    .byline {
+      margin-left: 1px;
+    }
+    a {
+      color: @accent;
+      text-decoration: none;
+      &:hover {
+        color: @content;
+      }
+    }
+  }
+
+  .entry-footer {
+    border-top: solid 1px darken(@background,5%);
+    border-bottom: solid 1px darken(@background,5%);
+    padding-top: 7px;
+    margin-top: 25px;
+    font-size: 12px;
+    .post-edit-link {
+      float: right;
+
+    }
+    .cat-links {
+      margin-right: 6px;
+    }
+  }
+
+  .property-meta-single {
+    font-size: 18px;
+    margin: 15px 0;
+    span {
+      font-size: 17px;
+      text-transform: uppercase;
+      background: fade(@accent,80%);
+      color: @onaccent;
+      display: inline-block;
+      padding: 8px 12px;
+      .fa {
+        margin-right: 5px;
+      }
+    }
+    .cost {
+      background: fade(#359a34, 80%);
+    }
+    .bedrooms {
+      background: fade(black, 50%);
+    }
+    .bathrooms {
+      background: fade(#4862a3, 80%);
+    }
+
+  }
+
+  .entry-content {
+    color: @content;
+    line-height: 2em;
+    font-size: 15px;
+  }
+
+  #featured-image {
+    margin-top: 10px;
+  }
+}
