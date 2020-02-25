@@ -1,11 +1,11 @@
 <?php
 
 /**
- *  Plugin name:    Employees
+ *  Plugin name:    Brookers
  *  Description:    Shorthand for showing brokers.
  *  Author:         Alexander Wilson
- *  Version:        0.1
- *  Text Domain:    employees
+ *  Version:        0.4
+ *  Text Domain:    brookers
  */
 
 
@@ -16,21 +16,23 @@ function get_and_print_out_employees()
     'role' => 'Administrator',
 ];
 $authors = get_users( $args );
-?>
-<div class="cards_group">
-<?php
+
+$cards = '<h1>Our brookers</h1>';
+$cards .= "<div class='cards_group'>";
+
     foreach ($authors as $author)
     {
-        ?>
-        <div class="brooker">
-            <img class="brooker-image" src="https://placekitten.com/690/300" alt="brooker">
-            <h3><?php echo "Brooker: $author->display_name"; ?></h3>
-            <p><?php echo "Email: $author->user_email"; ?></p>
-        </div>
-        <?php
+        $cards .= "<div class='brooker'>";
+            $cards .= "<img class='brooker-image' src='https://placekitten.com/690/300' alt='brooker'>";
+            $cards .= "<h4 class='card-header'>Brooker</h4>";
+            $cards .= "<p>$author->display_name</p>";
+            $cards .= "<h4 class='card-header'>Email</h4>";
+            $cards .= "<p>$author->user_email</p>";
+        $cards .= '</div>';
     }
-?>
-</div>
-<?php
+
+$cards .= '</div>';
+return $cards;
+
 }
 add_shortcode('employees', 'get_and_print_out_employees');
