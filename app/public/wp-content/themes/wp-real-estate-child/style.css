@@ -3,3 +3,19 @@
  Template:     wp-real-estate
  Version:      1.0.0
 */
+
+.cards_group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.brooker {
+    display: grid;
+    border: red solid 2px;
+    margin-bottom: 5%;
+}
+
+.brooker-image {
+    width: 100%;
+}
