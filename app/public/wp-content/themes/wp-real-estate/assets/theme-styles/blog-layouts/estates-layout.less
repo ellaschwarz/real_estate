@@ -1,0 +1,63 @@
+.estates {
+  padding: 1px;
+  position: relative;
+  margin-bottom: 0px;
+  .out-thumb {
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+  }
+  img {
+    -webkit-filter: brightness(0.9);
+    filter: brightness(0.9);
+    .transition(0.4s all ease);
+  }
+  .entry-header {
+    margin: 0;
+    font-size: 14px;
+    a {
+      display: inline-block;
+      width: 100%;
+      background: fade(white, 80%);
+      color: fade(black, 80%);
+      font-size: 14px;
+      padding: 8px;
+      .transition(0.4s all ease);
+    }
+  }
+  @media screen and (min-width: 767px) {
+    &:hover {
+      img {
+        -webkit-filter: brightness(1);
+        filter: brightness(1);
+      }
+      .entry-header a {
+        background: fade(black, 70%);
+        color: #eee;
+      }
+    }
+  }
+  .property-info {
+    span {
+      font-size: 13px;
+      text-transform: uppercase;
+      background: fade(@accent,80%);
+      color: @onaccent;
+      display: inline-block;
+      padding: 5px;
+      .fa {
+        margin-right: 5px;
+      }
+    }
+    .cost {
+      background: fade(#359a34, 80%);
+    }
+    .bedrooms {
+      background: fade(black, 50%);
+    }
+    .bathrooms {
+      background: fade(#4862a3, 80%);
+    }
+  }
+}
