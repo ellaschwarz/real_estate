@@ -1,0 +1,84 @@
+#property-search-form {
+  display: block;
+  overflow: auto;
+  padding: 15px;
+  padding-top: 0;
+  margin-bottom: 10px;
+  color: @content;
+  .psf-inner {
+    display: block;
+    padding: 10px;
+    background: darken(@background, 4%);
+  }
+  input[type=number], input[type=text] {
+    border-radius: 0;
+    border: solid 1px darken(@background, 12%);
+    outline: none;
+    padding: 5px;
+    padding-top: 7px;
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      width: 148px;
+    }
+  }
+  input[type=text] {
+    margin-right: 10px;
+  }
+  select {
+    margin-right: 10px;
+    padding: 5px 8px;
+    border: none;
+    box-shadow: none;
+    background: darken(@background,10%);
+    color: darken(@content,8%);
+    background-image: none;
+    -webkit-appearance: none;
+    position: relative;
+    min-width: 25px;
+    text-align: center;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  label {
+    margin-right: 5px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+  #searchsubmit {
+    box-shadow: none;
+    background: darken(@background, 8%);
+    color: @content;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    padding: 8px 6px;
+    line-height: initial;
+    -webkit-appearance: none;
+    border-radius: 0;
+    margin-left: 5px;
+    vertical-align: bottom;
+  }
+
+  //responsive
+  fieldset {
+    display: inline-block;
+    vertical-align: bottom;
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      margin: 4px 0;
+    }
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin-bottom: 5px;
+      padding: 5px;
+      background: darken(@background, 3%);
+      border-bottom: solid 1px darken(@background, 7%);
+      #searchsubmit {
+        margin-left: 0;
+      }
+      input[type=text] {
+        width: 100%;
+      }
+    }
+  }
+}
