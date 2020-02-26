@@ -22,13 +22,14 @@ while (have_posts()) :
     the_post();
 
     get_template_part('template-parts/content', get_post_type());
-    
-    $objectinfo = get_post_meta(get_the_ID(), 'objectinfo', true);
-    //var_dump($capital);
-    echo '<h3>' . $objectinfo . '</h3>';
 
     $object_id = get_post_meta(get_the_ID(), 'objectinfo', true);
     $address = get_post_meta(get_the_ID(), 'address', true);
+    $city = get_post_meta(get_the_ID(), 'city', true);
+    $price = get_post_meta(get_the_ID(), 'price', true);
+    $sqm = get_post_meta(get_the_ID(), 'm²', true);
+    $rooms = get_post_meta(get_the_ID(), 'rooms', true);
+    $inspection_times = get_post_meta(get_the_ID(), 'inspection_times', true);
 
 
     $args = [
@@ -36,27 +37,31 @@ while (have_posts()) :
         'post_type' => 'objects',
     ];
 
-    $object = get_posts($args);
+    $object = new WP_query($args);
 
-    if($object) :
-        foreach($object as $obj):
-    ?>
-
-        <!-- Content -->
-        <div class="col-xs-9">
-      <h1><a href="<?php echo get_permalink($obj->ID); ?>"><?php echo get_the_title($obj->ID); ?></a></h1>
-      <?php echo $trimmed = wp_trim_words(get_the_content($obj->ID), 15, '...'); ?>
-    </div>
-  </div>
-
-  <?php endforeach; wp_reset_postdata(); ?>
-<?php endif; ?>
-    
-<?php 
     if ($object -> have_posts()) {
         while ($object -> have_posts()) {
             $object->the_post();
-            echo '<p class="object"> Object: ' . get_the_title() . '</p>';
+            
+            echo '<h1 class="object_title"> ' . get_the_title() . '</h1>';
+            ?>
+            <div class="content_continer"
+            <?php
+            echo '<h5 class="object_content"> ' . get_the_content() . '</h5>';
+            ?> 
+            </div> <!-- content_container -->
+            <?php
+            echo '<p class="object_city"> ' . $city . '</p>';
+            ?>
+            <div class="info_container" 
+            <?php
+            echo '<p class="object_price"> Price: ' . $price . '</p>';
+            echo '<p class="object_sqm"> m²: ' . $sqm . '</p>';
+            echo '<p class="object_rooms"> Rooms: ' . $rooms . '</p>';
+            echo '<p class="object_inspection_times"> Inspection Times: ' . $inspection_times . '</p>';
+            ?>
+             </div> <!-- info_container -->
+             <?php
         }
 
         wp_reset_postdata();
