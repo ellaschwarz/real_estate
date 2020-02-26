@@ -11,3 +11,28 @@ function my_theme_enqueue_styles() {
         wp_get_theme()->get('Version')
     );
 }
+function estate_widgets(){
+    register_sidebar([
+        'name'          => __( 'Real Estate Group A sidebar Theme', 'real_estate' ),
+        'id'            => 'estate_sidebar_search',
+        'description'   => __( 'Sidebar for search', 'real_estate' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="widgettitle">',
+        'after_title'   => '</h4>',
+    ]);
+}
+function estate_widgets_broker(){
+    register_sidebar([
+        'name'          => __( 'Broker Group A sidebar', 'real_estate' ),
+        'id'            => 'estate_sidebar_broker',
+        'description'   => __( 'Sidebar for broker', 'real_estate' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="widgettitle">',
+        'after_title'   => '</h4>',
+    ]);
+}
+add_action('widgets_init','estate_widgets');
+add_action('widgets_init','estate_widgets_broker');
+
