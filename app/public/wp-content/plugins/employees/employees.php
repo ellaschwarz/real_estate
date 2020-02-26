@@ -13,7 +13,7 @@ function get_and_print_out_employees()
 {
     $args = [
     'order'   => 'DESC',
-    'role' => 'Administrator',
+    'role' => 'Author',
 ];
 $authors = get_users( $args );
 
@@ -22,10 +22,12 @@ $cards .= "<div class='cards_group'>";
 
     foreach ($authors as $author)
     {
+        //Setting size to 204 from 96 since the higher the size, the less blurry image.
+        $author_avatar = get_avatar_url($author->user_email, ['size' => 204]);
         $cards .= "<div class='brooker'>";
-            $cards .= "<img class='brooker-image' src='https://placekitten.com/690/300' alt='brooker'>";
+            $cards .= '<img class="brooker-image" src="'.$author_avatar.'" alt="brooker">';
             $cards .= "<h4 class='card-header'>Brooker</h4>";
-            $cards .= "<p>$author->display_name</p>";
+            $cards .= "<p>$author->user_nicename</p>";
             $cards .= "<h4 class='card-header'>Email</h4>";
             $cards .= "<p>$author->user_email</p>";
         $cards .= '</div>';
