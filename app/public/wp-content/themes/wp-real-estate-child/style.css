@@ -30,7 +30,6 @@
     margin-bottom: 0px;
 }
 
-<<<<<<< HEAD
 .main_container {
     display: grid;
     grid-template-rows: 40px 20px 1fr;
@@ -46,7 +45,6 @@
     grid-row: 3/4;
     grid-column: 2/3;
 }
-=======
  /** Sidebar **/
  
  .sidebar a {
@@ -91,4 +89,3 @@
     max-width: 413px;
     width: 29.4118%;
 }
->>>>>>> e9163b3eddc22da2488941fa3cab06cc7ad34781

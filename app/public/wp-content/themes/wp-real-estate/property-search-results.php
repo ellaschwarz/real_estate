@@ -9,11 +9,12 @@
  */
  
 $_name = $_GET['name'] != '' ? esc_html($_GET['name']) : '';
-$_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : 'rent';
 $_bed = $_GET['bed'] != '' ? esc_html($_GET['bed']) : '1';
-$_bath = $_GET['bath'] != '' ? esc_html($_GET['bath']) : '1';
 $_cmax = $_GET['cost'] != '' ? esc_html($_GET['cost']) : '99999999999';
 
+echo $_name;
+echo $_bed;
+echo $_cmax;
 get_header(); ?>
 
 	<div id="primary" class="content-area <?php apply_filters('wpre_primary-width','wpre_primary_class') ?>">
@@ -21,29 +22,19 @@ get_header(); ?>
 		
 		<?php
 			$p_args = array(
-		        'post_type'     =>  'post', // your CPT
+		        'post_type'		=> 'objects', // your CPT
 		        's'             =>  $_name, // looks into everything with the keyword from your 'name field'
 		        'meta_query' => array(
 					'relation' => 'AND',
 					array(
-						'key'     => 'property_bedrooms',
+						'key'     => 'rooms',
 						'value'   => $_bed,
 						'type'    => 'NUMERIC',
 						'compare' => '>=',
 					),
+					
 					array(
-						'key'     => 'property_listing_type',
-						'value'   => $_type,
-						'compare' => '=',
-					),
-					array(
-						'key'     => 'property_bathrooms',
-						'value'   => $_bath,
-						'type'    => 'NUMERIC',
-						'compare' => '>=',
-					),
-					array(
-						'key'     => 'property_cost',
+						'key'     => 'price',
 						'value'   => $_cmax,
 						'type'    => 'NUMERIC',
 						'compare' => '<=',
