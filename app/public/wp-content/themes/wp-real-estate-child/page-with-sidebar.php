@@ -1,17 +1,9 @@
 <?php
-/**
- * The template for displaying all pages.
+/*
+ * Template Name:Page with Sidebar
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * @package wpre
  */
-
-get_header(); ?>
-
+get_header();?>
 	<div id="primary-mono" class="content-areas <?php apply_filters('wpre_primary-width','wpre_primary_class') ?> page">
 		<main id="main" class="site-main" role="main">
 
@@ -31,4 +23,5 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php get_sidebar(); ?>
+<?php get_footer();?>
