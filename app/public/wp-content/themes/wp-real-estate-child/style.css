@@ -29,3 +29,19 @@
 .card-header {
     margin-bottom: 0px;
 }
+
+.main_container {
+    display: grid;
+    grid-template-rows: 40px 20px 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info_container {
+    grid-row: 3/4;
+    grid-column: 1/2;
+}
+
+.content_container {
+    grid-row: 3/4;
+    grid-column: 2/3;
+}
