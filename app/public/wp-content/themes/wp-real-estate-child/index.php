@@ -17,7 +17,7 @@ get_header(); ?>
 		<main id="main" class="site-main <?php apply_filters('wpre_main-class', 'wpre_get_main_class'); ?>" role="main">
 		<?php if (is_home() ) : ?>
 			<div class="col-md-12 index-title"><div class="section-title title-font"><?php _e('Latest Listings','wp-real-estate'); ?></div></div>
-		<?php endif; ?>
+		<?php endif; ?>	
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
@@ -27,7 +27,7 @@ get_header(); ?>
 					/* Include the Post-Format-specific template for the content.
 					 */
 					do_action('wpre_blog_layout'); 
-
+					
 				?>
 
 			<?php endwhile; ?>
