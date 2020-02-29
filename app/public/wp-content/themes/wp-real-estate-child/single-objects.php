@@ -21,8 +21,7 @@ get_header();
 while (have_posts()) :
     the_post();
 
-  //  get_template_part('template-parts/content', get_post_type());
-    get_template_part( '/modules/content/content', get_post_type());
+    get_template_part('template-parts/content', get_post_type());
 
     $object_id = get_post_meta(get_the_ID(), 'objectinfo', true);
     $info = get_post_meta(get_the_ID(), 'info', true);
@@ -54,7 +53,7 @@ while (have_posts()) :
     echo do_shortcode(get_the_content());
 
     echo '<h1 class="object_title"> ' . get_the_title() . '</h1>';
-    echo '<p class="object_city"> ' . $area . ', ' . $city . '</p>';
+    echo '<h2 class="object_city"> ' . $area . ', ' . $city . '</h2>';
     ?>
     <div class="main_container">
     <div class="content_container">
@@ -63,19 +62,18 @@ while (have_posts()) :
     ?> 
     </div> <!-- content_container -->
     <div class="info_container" >
-        <table class="info_container" >
-            
+    <table >
     <?php
-    echo '<tr><td class="object_td"> Price: ' . '</td>';
-    echo '<td>' . $price . ' kr' . '</td></tr>';
-    echo '<tr><td class="object_td"> m²: ' . '</td>';
-    echo '<td >' . $sqm . '</td></tr>';
-    echo '<tr><td class="object_td"> Rooms: ' . '</td>';
-    echo '<td>' . $rooms . '</td></tr>';
-    echo '<tr><td class="object_td"> Inspection Times: ' . '</td>';
-    echo '<td> ' . $inspection_times . '</td></tr>';
+   echo '<tr><td class="object_td"> Price: ' . '</td>';
+   echo '<td>' . $price . ' kr' . '</td></tr>';
+   echo '<tr><td class="object_td"> m²: ' . '</td>';
+   echo '<td >' . $sqm . '</td></tr>';
+   echo '<tr><td class="object_td"> Rooms: ' . '</td>';
+   echo '<td>' . $rooms . '</td></tr>';
+   echo '<tr><td class="object_td"> Inspection Times: ' . '</td>';
+   echo '<td> ' . $inspection_times . '</td></tr>';
     ?>
-    </table>
+      </table>
      </div> <!-- info_container -->
      </div> <!-- main_container -->
      <?php
