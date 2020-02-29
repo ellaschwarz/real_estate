@@ -15,6 +15,25 @@ acf_add_local_field_group(array(
 	'title' => 'objectinfo',
 	'fields' => array(
 		array(
+			'key' => 'field_5e563ty128yu9',
+			'label' => 'Info',
+			'name' => 'info',
+			'type' => 'textarea',
+			'instructions' => 'Type some description about the object',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array(
 			'key' => 'field_5e551ed236ed8',
 			'label' => 'Address',
 			'name' => 'address',
