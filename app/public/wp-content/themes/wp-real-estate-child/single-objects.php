@@ -21,7 +21,8 @@ get_header();
 while (have_posts()) :
     the_post();
 
-    get_template_part('template-parts/content', get_post_type());
+  //  get_template_part('template-parts/content', get_post_type());
+    get_template_part( '/modules/content/content', get_post_type());
 
     $object_id = get_post_meta(get_the_ID(), 'objectinfo', true);
     $address = get_post_meta(get_the_ID(), 'address', true);
@@ -48,23 +49,30 @@ while (have_posts()) :
         wp_reset_postdata();
     }
 
-    echo do_shortcode('[sp_wpcarousel id="70"]');
-    echo '<h1 class="object_title"> ' . get_the_title() . '</h1>';
-    echo '<p class="object_city"> ' . $area . ', ' . $city . '</p>';
+   // echo do_shortcode('[sp_wpcarousel id="70"]');
+  //  echo '<h1 class="object_title"> ' . get_the_title() . '</h1>';
+    echo '<h2 class="object_city"> ' . $area . ', ' . $city . '</h2>';
     ?>
     <div class="main_container">
-    <div class="content_container"
+    <div class="content_container">
     <?php
-    echo '<h5 class="object_content"> ' . get_the_content() . '</h5>';
+ //   echo '<h5 class="object_content"> ' . get_the_content() . '</h5>';
     ?> 
     </div> <!-- content_container -->
-    <div class="info_container" 
+    <div class="info_container" >
+        <table class="info_container" >
+            
     <?php
-    echo '<p class="object_price"> Price: ' . $price . ' kr' . '</p>';
-    echo '<p class="object_sqm"> m²: ' . $sqm . '</p>';
-    echo '<p class="object_rooms"> Rooms: ' . $rooms . '</p>';
-    echo '<p class="object_inspection_times"> Inspection Times: ' . $inspection_times . '</p>';
+    echo '<tr><td class="object_td"> Price: ' . '</td>';
+    echo '<td>' . $price . ' kr' . '</td></tr>';
+    echo '<tr><td class="object_td"> m²: ' . '</td>';
+    echo '<td >' . $sqm . '</td></tr>';
+    echo '<tr><td class="object_td"> Rooms: ' . '</td>';
+    echo '<td>' . $rooms . '</td></tr>';
+    echo '<tr><td class="object_td"> Inspection Times: ' . '</td>';
+    echo '<td> ' . $inspection_times . '</td></tr>';
     ?>
+    </table>
      </div> <!-- info_container -->
      </div> <!-- main_container -->
      <?php
