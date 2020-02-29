@@ -82,5 +82,4 @@ endwhile; // End of the loop.
 </div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();
