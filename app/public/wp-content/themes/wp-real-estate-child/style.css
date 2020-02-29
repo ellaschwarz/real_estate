@@ -30,21 +30,31 @@
     margin-bottom: 0px;
 }
 
+/* OBJECTS */
+
 .main_container {
     display: grid;
     grid-template-rows: 40px 20px 1fr;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5px;
 }
 
 .info_container {
     grid-row: 3/4;
     grid-column: 1/2;
+    font-size: 16px;
 }
 
 .content_container {
     grid-row: 3/4;
     grid-column: 2/3;
+    font-size: 16px;
+
 }
+
+/* OBJECTS */
+
+
  /** Sidebar **/
  
  .sidebar a {
