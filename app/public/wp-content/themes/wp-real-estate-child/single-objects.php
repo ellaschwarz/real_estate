@@ -24,6 +24,7 @@ while (have_posts()) :
     get_template_part('template-parts/content', get_post_type());
 
     $object_id = get_post_meta(get_the_ID(), 'objectinfo', true);
+    $info = get_post_meta(get_the_ID(), 'info', true);
     $address = get_post_meta(get_the_ID(), 'address', true);
     $area = get_post_meta(get_the_ID(), 'area', true);
     $city = get_post_meta(get_the_ID(), 'city', true);
@@ -48,14 +49,16 @@ while (have_posts()) :
         wp_reset_postdata();
     }
 
-    echo do_shortcode('[sp_wpcarousel id="70"]');
+
+    echo do_shortcode(get_the_content());
+
     echo '<h1 class="object_title"> ' . get_the_title() . '</h1>';
     echo '<p class="object_city"> ' . $area . ', ' . $city . '</p>';
     ?>
     <div class="main_container">
     <div class="content_container"
     <?php
-    echo '<h5 class="object_content"> ' . get_the_content() . '</h5>';
+    echo '<h5 class="object_content"> ' . $info . '</h5>';
     ?> 
     </div> <!-- content_container -->
     <div class="info_container" 
