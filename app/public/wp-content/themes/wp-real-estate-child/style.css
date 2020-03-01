@@ -45,14 +45,22 @@
     grid-row: 3/4;
     grid-column: 1/2;
     font-size: 16px;
-    text-transform: uppercase;
+    letter-spacing: 1px;
 
 }
 
 .content_container {
     grid-row: 3/4;
     grid-column: 2/3;
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 10px;
+}
+
+.info_container .object_td{
+    font-weight: bold;
+    color: #be2819;
+    text-transform: uppercase;
+
 }
 
 /* OBJECTS */
@@ -103,12 +111,3 @@
     width: 29.4118%;
 }
 
-.info_container{
-    font-size: 2rem;
-
-}
-.info_container .object_td{
-    font-weight: bold;
-    color: rgba(230, 115, 48, 0.966); 
-
-}
