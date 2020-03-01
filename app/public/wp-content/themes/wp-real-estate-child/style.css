@@ -109,3 +109,12 @@
     color: rgba(230, 115, 48, 0.966); 
 
 }
+.photo {
+	background-color: #fff;
+	display: block;
+	float: left;
+	width: 50%;
+	margin: 0 0 27px 30px;
+	padding: 10px 10px 15px 10px;
+	
+}

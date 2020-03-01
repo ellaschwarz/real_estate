@@ -10,7 +10,7 @@
 <div class="psf-inner">	
 <form method="get" id="property-searchform" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
     <!-- PASSING THIS TO TRIGGER THE ADVANCED SEARCH RESULT PAGE FROM functions.php -->
-    <input type="hidden" name="search" value="property">
+
     <fieldset>
     <input type="text" value="<?php echo (isset($_GET['name'])) ? $_GET['name'] : ''?>" placeholder="<?php _e( 'Property Name or Area', 'wp-real-estate' ); ?>" name="name" id="name" />
     </fieldset>

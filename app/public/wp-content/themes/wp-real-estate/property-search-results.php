@@ -9,37 +9,47 @@
  */
 
 $_name = $_GET['name'] != '' ? esc_html($_GET['name']) : '';
-$_bed = $_GET['bed'] != '' ? esc_html($_GET['bed']) : '1';
-$_cmax = $_GET['cost'] != '' ? esc_html($_GET['cost']) : '99999999999';
+$_area = $_GET['area'] != '' ? esc_html($_GET['area']) : '';
+$_minbed = $_GET['minbed'] != '' ? esc_html($_GET['minbed']) : '1';
+$_maxbed = $_GET['maxbed'] != '' ? esc_html($_GET['maxbed']) : '6';
+$_cmin = $_GET['mincost'] != '' ? esc_html($_GET['mincost']) : '1';
+$_cmax = $_GET['maxcost'] != '' ? esc_html($_GET['maxcost']) : '99999999999';
 $_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : '';
 
-echo $_name;
-echo $_type;
-echo $_bed;
-echo $_cmax;
+echo 'area : ',$_area,'name: ', $_name,'Type: ', $_type,'minbed: ',$_minbed, 'bed',$_maxbed,'cmin: ',$_cmin, 'cmax: ',$_cmax ;
+
+echo 'Property';
 
 get_header();?>
 
-	<div id="primary" class="content-area <?php apply_filters('wpre_primary-width', 'wpre_primary_class')?>">
-		<main id="main" class="site-main" role="main">
+<div id="primary" class="content-area <?php apply_filters('wpre_primary-width', 'wpre_primary_class')?>">
+    <main id="main" class="site-main" role="main">
 
-		<?php
+        <?php
 $p_args = array(
     'post_type' => 'objects', // your CPT
-    's' => $_name, // looks into everything with the keyword from your 'name field'
+    // looks into everything with the keyword from your 'name field'
     'meta_query' => array(
         'relation' => 'AND',
         array(
             'key' => 'rooms',
-            'value' => $_bed,
-            'type' => 'NUMERIC',
-            'compare' => '>=',
+            'value' => array($_minbed,$_maxbed),
+            'compare' => 'BETWEEN',
+        ),
+        array(
+            'key' => 'address',
+            'value' => $_name,
+            'compare' => 'LIKE'
+        ),
+        array(
+            'key' => 'area',
+            'value' => $_area,
+            'compare' => 'LIKE'
         ),
         array(
             'key' => 'price',
-            'value' => $_cmax,
-            'type' => 'NUMERIC',
-            'compare' => '<=',
+            'value' => array($_cmin,$_cmax),
+            'compare' => 'BETWEEN',
         ),
     ),
     'tax_query' => array(
@@ -53,39 +63,70 @@ $p_args = array(
         ),
     ),
 );
-var_dump($p_args);
 $propSearchQuery = new WP_Query($p_args);
 
 ?>
 
-		<?php if ($propSearchQuery->have_posts()): ?>
+        <?php if ($propSearchQuery->have_posts()): ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php _e('Search Results', 'wp-real-estate');?></h1>
-			</header><!-- .page-header -->
+        <header class="page-header">
+            <h1 class="page-title"><?php _e('Search Results', 'wp-real-estate');?></h1>
+        </header><!-- .page-header -->
 
-			<?php /* Start the Loop */?>
-			<?php while ($propSearchQuery->have_posts()): $propSearchQuery->the_post();?>
+        <?php /* Start the Loop */?>
+        <?php while ($propSearchQuery->have_posts()): $propSearchQuery->the_post();?>
 
-					<?php
-    /**
-     * Run the loop for the search to output the results.
-     */
-    get_template_part('framework/layouts/content', 'wp-real-estate');
-    ?>
+	        <article id="post-<?php the_ID();?>" <?php post_class();?>>
+	            <div class="grid2-3">
+	                <!-- post title -->
+	                <h3>
+	                    <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
+	                </h3>
+	                <!-- /post title -->
 
-				<?php endwhile;?>
+	            </div>
+	            <!-- post thumbnail -->
+	            <?php if (has_post_thumbnail()): // Check if thumbnail exists ?>
+		            <div class="photo">
+		                <a href="<?php the_permalink();?>" title="<?php the_title();?>">
+		                    <?php the_post_thumbnail('feadturedBlog', array('class' => 'polaroid')); // Declare pixel size you need inside the array ?>
+		                </a>
+		            </div>
+		            <?php endif;?>
+	            <!-- /post thumbnail -->
+	            <div class="clear">
+	                <div class="grid1-3 post-information">
+	                    <!-- post details -->
+	                    <span
+	                        class="date"><strong><?php _e('Area: ', 'html5blank');?></strong><?php the_field('area');?></span><br />
+	                    <span
+	                        class="date"><strong><?php _e('Rooms: ', 'html5blank');?></strong><?php the_field('rooms');?></span><br />
+	                    <span
+	                        class="date"><strong><?php _e('m²: ', 'html5blank');?></strong><?php the_field('m²');?></span><br />
+	                    <span
+	                        class="author"><strong><?php _e('Price: ', 'html5blank');?></strong><?php the_field('price');?></span><br />
+	                    <span
+	                        class="author"><strong><?php _e('Inspection_times: ', 'html5blank');?></strong><?php the_field('inspection_times');?></span>
+	                    <p><strong><?php _e('Category: ', 'html5blank');?></strong>
+	                        <?php the_category(', '); // Separated by commas ?></p>
+	                    <!-- /post details -->
+	                </div>
+	            </div>
+	            <!--.clear-->
+	            <?php // edit_post_link(); ?>
+	        </article>
 
-			<?php wpre_pagination();?>
+	        <?php endwhile;?>
 
-		<?php else: ?>
+        <?php wpre_pagination();?>
 
-			<?php _e('No Properties were found with specified parameters. Please search using different parameters.', 'wp-real-estate')?>
+        <?php else: ?>
 
-		<?php endif;?>
+        <?php _e('No Properties were found with specified parameters. Please search using different parameters.', 'wp-real-estate')?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+        <?php endif;?>
 
-<?php get_sidebar();?>
+    </main><!-- #main -->
+</div><!-- #primary -->
+
 <?php get_footer();?>

@@ -47,3 +47,4 @@ function pagination_nav() {
         </nav>
 <?php }
 }
+
