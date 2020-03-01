@@ -53,21 +53,27 @@ while (have_posts()) :
     echo do_shortcode(get_the_content());
 
     echo '<h1 class="object_title"> ' . get_the_title() . '</h1>';
-    echo '<p class="object_city"> ' . $area . ', ' . $city . '</p>';
+    echo '<h2 class="object_city"> ' . $area . ', ' . $city . '</h2>';
     ?>
     <div class="main_container">
-    <div class="content_container"
+    <div class="content_container">
     <?php
     echo '<h5 class="object_content"> ' . $info . '</h5>';
     ?> 
     </div> <!-- content_container -->
-    <div class="info_container" 
+    <div class="info_container" >
+    <table >
     <?php
-    echo '<p class="object_price"> Price: ' . $price . ' kr' . '</p>';
-    echo '<p class="object_sqm"> m²: ' . $sqm . '</p>';
-    echo '<p class="object_rooms"> Rooms: ' . $rooms . '</p>';
-    echo '<p class="object_inspection_times"> Inspection Times: ' . $inspection_times . '</p>';
+   echo '<tr><td class="object_td"> Price: ' . '</td>';
+   echo '<td>' . $price . ' kr' . '</td></tr>';
+   echo '<tr><td class="object_td"> m²: ' . '</td>';
+   echo '<td >' . $sqm . '</td></tr>';
+   echo '<tr><td class="object_td"> Rooms: ' . '</td>';
+   echo '<td>' . $rooms . '</td></tr>';
+   echo '<tr><td class="object_td"> Inspection Times: ' . '</td>';
+   echo '<td> ' . $inspection_times . '</td></tr>';
     ?>
+      </table>
      </div> <!-- info_container -->
      </div> <!-- main_container -->
      <?php
