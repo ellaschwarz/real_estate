@@ -3,21 +3,24 @@
 <?php
     $args = [
         'post_type'	    => 'objects',
-        //'meta_key'		=> 'selected',
-        //'meta_value'	=> 'true',
     ];
 
     $query = new WP_Query( $args );
-    echo "HEJ";
     if( $query->have_posts() ):
-       while( $query->have_posts() ) : $query->the_post(); ?>
-          <p><?php echo the_title(); ?></p>
-       <?php endwhile; ?>
-    <?php endif; ?>
+       while( $query->have_posts() ) :
+           $query->the_post();
+           $selected = get_post_meta(get_the_ID(), 'selected', true);
+           if ($selected === "Yes") : ?>
+               <?php the_post_thumbnail(); ?>
+               <a href="<?php echo get_permalink(get_the_ID()); ?>">
+               <?php echo the_title(); echo " Selected: " . $selected; ?>
+           </a>
+           <?php
+            endif;
+       endwhile;
+    endif;
+    wp_reset_query(); ?>
 
-    <?php wp_reset_query();	 // Restore global post data stomped by the_post().
-
- ?>
         <?php if (get_theme_mod('wpre_hinfo_enable') && (get_theme_mod('wpre_header_content_page') != '' )) :
             $pageid = get_theme_mod('wpre_header_content_page'); ?>
             <div class="header-information">
