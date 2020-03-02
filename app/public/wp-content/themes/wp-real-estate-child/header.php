@@ -17,7 +17,7 @@ get_template_part('/modules/header/head');?>
 	<?php get_template_part('modules/header/masthead');?>
 
 	<?php //Check if Plugin active
-		if (is_front_page() || (isset($_GET['search']))):
+		if (is_front_page()):
 		    get_template_part('object', 'searchform');
 		endif;
 	?>

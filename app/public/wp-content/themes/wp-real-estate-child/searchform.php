@@ -6,7 +6,7 @@
 ?>
 
 
-<div id="property-search-form" class="container">
+<div id="property-search-form-child" class="container">
 <div class="psf-inner">	
 <form method="get" id="property-searchform" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
     <!-- PASSING THIS TO TRIGGER THE ADVANCED SEARCH RESULT PAGE FROM functions.php -->
@@ -39,7 +39,7 @@
 	<fieldset>
     <label for="minbed" class=""><?php _e( 'Bedrooms (Min): ', 'wp-real-estate' ); ?></label>
     <select name="minbed" id="minbed">
-        <option selected <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '1') ? 'selected' : ''?> value="1"><?php _e( '1', 'wp-real-estate' ); ?></option>
+        <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '1') ? 'selected' : ''?> value="1"><?php _e( '1', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '2') ? 'selected' : ''?> value="2"><?php _e( '2', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '3') ? 'selected' : ''?> value="3"><?php _e( '3', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '4') ? 'selected' : ''?> value="4"><?php _e( '4', 'wp-real-estate' ); ?></option>
@@ -55,7 +55,7 @@
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '3') ? 'selected' : ''?> value="3"><?php _e( '3', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '4') ? 'selected' : ''?> value="4"><?php _e( '4', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '5') ? 'selected' : ''?> value="5"><?php _e( '5', 'wp-real-estate' ); ?></option>
-		<option selected <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '6') ? 'selected' : ''?> value="6"><?php _e( '6', 'wp-real-estate' ); ?></option>
+		<option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '6') ? 'selected' : ''?> value="6"><?php _e( '6', 'wp-real-estate' ); ?></option>
     </select>
 	</fieldset>
 

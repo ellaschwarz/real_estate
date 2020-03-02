@@ -128,5 +128,5 @@ $propSearchQuery = new WP_Query($p_args);
 
     </main><!-- #main -->
 </div><!-- #primary -->
-
+<?php get_sidebar('left');?>
 <?php get_footer();?>
