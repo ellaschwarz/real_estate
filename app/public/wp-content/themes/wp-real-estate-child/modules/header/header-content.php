@@ -3,23 +3,25 @@
 <?php
     $args = [
         'post_type'	    => 'objects',
+        //'posts_per_page'=> 1,
     ];
-
     $query = new WP_Query( $args );
+
     if( $query->have_posts() ):
        while( $query->have_posts() ) :
            $query->the_post();
            $selected = get_post_meta(get_the_ID(), 'selected', true);
            if ($selected === "Yes") : ?>
                <?php the_post_thumbnail(); ?>
+               <br>
                <a href="<?php echo get_permalink(get_the_ID()); ?>">
                <?php echo the_title(); echo " Selected: " . $selected; ?>
            </a>
            <?php
             endif;
        endwhile;
-    endif;
-    wp_reset_query(); ?>
+       wp_reset_query();
+    endif;?>
 
         <?php if (get_theme_mod('wpre_hinfo_enable') && (get_theme_mod('wpre_header_content_page') != '' )) :
             $pageid = get_theme_mod('wpre_header_content_page'); ?>
