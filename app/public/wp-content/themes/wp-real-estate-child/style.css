@@ -111,15 +111,6 @@
     width: 29.4118%;
 }
 
-.info_container{
-    font-size: 2rem;
-
-}
-.info_container .object_td{
-    font-weight: bold;
-    color: rgba(230, 115, 48, 0.966); 
-
-}
 .photo {
 	background-color: #fff;
 	display: block;
