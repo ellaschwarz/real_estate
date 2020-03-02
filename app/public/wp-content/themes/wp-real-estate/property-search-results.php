@@ -16,12 +16,8 @@ $_cmin = $_GET['mincost'] != '' ? esc_html($_GET['mincost']) : '1';
 $_cmax = $_GET['maxcost'] != '' ? esc_html($_GET['maxcost']) : '99999999999';
 $_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : '';
 
-echo 'area : ',$_area,'name: ', $_name,'Type: ', $_type,'minbed: ',$_minbed, 'bed',$_maxbed,'cmin: ',$_cmin, 'cmax: ',$_cmax ;
-
-echo 'Property';
-
 get_header();?>
-
+<?php get_sidebar('left');?>
 <div id="primary" class="content-area <?php apply_filters('wpre_primary-width', 'wpre_primary_class')?>">
     <main id="main" class="site-main" role="main">
 
@@ -76,47 +72,69 @@ $propSearchQuery = new WP_Query($p_args);
         <?php /* Start the Loop */?>
         <?php while ($propSearchQuery->have_posts()): $propSearchQuery->the_post();?>
 
-	        <article id="post-<?php the_ID();?>" <?php post_class();?>>
-	            <div class="grid2-3">
-	                <!-- post title -->
-	                <h3>
-	                    <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
-	                </h3>
-	                <!-- /post title -->
+        <article id="post-<?php the_ID();?>" <?php post_class();?>>
+            <div class="grid2-3">
+                <!-- post title -->
+                <h3>
+                    <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a>
+                </h3>
+                <!-- /post title -->
 
-	            </div>
-	            <!-- post thumbnail -->
-	            <?php if (has_post_thumbnail()): // Check if thumbnail exists ?>
-		            <div class="photo">
-		                <a href="<?php the_permalink();?>" title="<?php the_title();?>">
-		                    <?php the_post_thumbnail('feadturedBlog', array('class' => 'polaroid')); // Declare pixel size you need inside the array ?>
-		                </a>
-		            </div>
-		            <?php endif;?>
-	            <!-- /post thumbnail -->
-	            <div class="clear">
-	                <div class="grid1-3 post-information">
-	                    <!-- post details -->
-	                    <span
-	                        class="date"><strong><?php _e('Area: ', 'html5blank');?></strong><?php the_field('area');?></span><br />
-	                    <span
-	                        class="date"><strong><?php _e('Rooms: ', 'html5blank');?></strong><?php the_field('rooms');?></span><br />
-	                    <span
-	                        class="date"><strong><?php _e('m²: ', 'html5blank');?></strong><?php the_field('m²');?></span><br />
-	                    <span
-	                        class="author"><strong><?php _e('Price: ', 'html5blank');?></strong><?php the_field('price');?></span><br />
-	                    <span
-	                        class="author"><strong><?php _e('Inspection_times: ', 'html5blank');?></strong><?php the_field('inspection_times');?></span>
-	                    <p><strong><?php _e('Category: ', 'html5blank');?></strong>
-	                        <?php the_category(', '); // Separated by commas ?></p>
-	                    <!-- /post details -->
-	                </div>
-	            </div>
-	            <!--.clear-->
-	            <?php // edit_post_link(); ?>
-	        </article>
+            </div>
+            <!-- post thumbnail -->
+            <?php if (has_post_thumbnail()): // Check if thumbnail exists ?>
+            <div class="container-fluid">
+                <div class='row'>
+                    <div class="photo col-md-5">
+                        <a href="<?php the_permalink();?>" title="<?php the_title();?>">
+                            <?php the_post_thumbnail('medium', array('class' => 'polaroid')); // Declare pixel size you need inside the array ?>
+                        </a>
+                    </div>
+                    <?php endif;?>
+                    <!-- /post thumbnail -->
+                        <!-- post details -->
+                        <div class='col-md-7'>
+                            <div class="container-fluid info_container">
+                                <div class='row'>
+                                    <p class="col-md-6 object_td">  <strong><?php _e('Area: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"><?php the_field('area');?></p>
+                                </div>
 
-	        <?php endwhile;?>
+                                <div class='row'>
+                                    <p class="col-md-6 object_td"> <strong><?php _e('Rooms: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"><?php the_field('rooms');?></p>
+                                </div>
+
+                                <div class='row'>
+                                    <p class="col-md-6 object_td"> <strong><?php _e('m²: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"><?php the_field('m²');?></p>
+                                </div>
+
+                                <div class='row'>
+                                    <p class="col-md-6 object_td"><strong> <?php _e('Price: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"><?php the_field('price');?></p>
+                                </div>
+
+                                <div class='row'>
+                                    <p class="col-md-6 object_td"><strong> <?php _e('Inspection times: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"><?php the_field('inspection_times');?></p>
+                                </div>
+
+                                <div class='row'>
+                                    <p class="col-md-6 object_td"><strong><?php _e('Category: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"> <?php the_category(', '); // Separated by commas ?></p>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <!-- /post details -->
+                    </div>
+                </div>
+                <!--.clear-->
+                <?php // edit_post_link(); ?>
+        </article>
+
+        <?php endwhile;?>
 
         <?php wpre_pagination();?>
 
@@ -128,5 +146,4 @@ $propSearchQuery = new WP_Query($p_args);
 
     </main><!-- #main -->
 </div><!-- #primary -->
-<?php get_sidebar('left');?>
 <?php get_footer();?>

@@ -86,9 +86,8 @@ while (have_posts()) :
 endwhile; // End of the loop.
 ?>
 
-<?php get_sidebar() ?>
-       
-    </main><!-- #main -->
+
+</main><!-- #main -->
 </div><!-- #primary -->
 
 <?php get_footer();

@@ -12,14 +12,16 @@
     <!-- PASSING THIS TO TRIGGER THE ADVANCED SEARCH RESULT PAGE FROM functions.php -->
     <input type="hidden" name="search" value="property">
     <fieldset>
-    <input type="text" value="<?php echo (isset($_GET['name'])) ? $_GET['name'] : ''?>" placeholder="<?php _e( 'Property Name', 'wp-real-estate' ); ?>" name="name" id="name" />
+    <label for="name" class=""><?php _e( 'Address: ', 'wp-real-estate' ); ?></label>
+    <input type="text" value="<?php echo (isset($_GET['name'])) ? $_GET['name'] : ''?>" placeholder="<?php _e( 'Property Address', 'wp-real-estate' ); ?>" name="name" id="name" />
     </fieldset>
     <fieldset>
+    <label for="area" class=""><?php _e( 'Area: ', 'wp-real-estate' ); ?></label>
     <input type="text" value="<?php echo (isset($_GET['area'])) ? $_GET['area'] : ''?>" placeholder="<?php _e( 'Property Area', 'wp-real-estate' ); ?>" name="area" id="area" />
     </fieldset>
 
 	<fieldset>
-	<label for="listing_type" class=""><?php _e( 'Tag: ', 'wp-real-estate' ); ?></label>
+	<label for="listing_type" class=""><?php _e( 'Option: ', 'wp-real-estate' ); ?></label>
     <select name="listing_type" id="listing_type">
     <?php 
       $terms = get_terms( array(
@@ -37,7 +39,7 @@
 	</fieldset>
 
 	<fieldset>
-    <label for="minbed" class=""><?php _e( 'Bedrooms (Min): ', 'wp-real-estate' ); ?></label>
+    <label for="minbed" class=""><?php _e( 'Rooms (Min):', 'wp-real-estate' ); ?></label>
     <select name="minbed" id="minbed">
         <option selected <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '1') ? 'selected' : ''?> value="1"><?php _e( '1', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '2') ? 'selected' : ''?> value="2"><?php _e( '2', 'wp-real-estate' ); ?></option>
@@ -48,7 +50,7 @@
     </select>
     </fieldset>
     <fieldset>
-    <label for="maxbed" class=""><?php _e( 'Bedrooms (Max): ', 'wp-real-estate' ); ?></label>
+    <label for="maxbed" class=""><?php _e( 'Rooms(Max):', 'wp-real-estate' ); ?></label>
     <select name="maxbed" id="maxbed">
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '1') ? 'selected' : ''?> value="1"><?php _e( '1', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '2') ? 'selected' : ''?> value="2"><?php _e( '2', 'wp-real-estate' ); ?></option>
@@ -60,17 +62,17 @@
 	</fieldset>
 
     <fieldset>
-    <label for="mincost" class=""><?php _e( 'Cost (Min) : ', 'wp-real-estate' ); ?></label>
-    <input type="number" step="0.1" value="<?php echo (isset($_GET['mincost'])) ? $_GET['mincost'] : ''?>" placeholder="<?php _e( '240000 (no symbols)', 'wp-real-estate' ); ?>" name="mincost" id="mincost" />
+    <label for="mincost" class=""><?php _e( 'Price (Min) : ', 'wp-real-estate' ); ?></label>
+    <input type="number" step="0.1" value="<?php echo (isset($_GET['mincost'])) ? $_GET['mincost'] : ''?>" placeholder="<?php _e( '1 (no symbols)', 'wp-real-estate' ); ?>" name="mincost" id="mincost" />
     </fieldset>
 
     <fieldset>
-    <label for="maxcost" class=""><?php _e( 'Cost (Max) : ', 'wp-real-estate' ); ?></label>
-    <input type="number" step="0.1" value="<?php echo (isset($_GET['maxcost'])) ? $_GET['maxcost'] : ''?>" placeholder="<?php _e( '240000 (no symbols)', 'wp-real-estate' ); ?>" name="maxcost" id="maxcost" />
+    <label for="maxcost" class=""><?php _e( 'Price (Max) : ', 'wp-real-estate' ); ?></label>
+    <input type="number" step="0.1" value="<?php echo (isset($_GET['maxcost'])) ? $_GET['maxcost'] : ''?>" placeholder="<?php _e( '99999999 (no symbols)', 'wp-real-estate' ); ?>" name="maxcost" id="maxcost" />
     </fieldset>
 
     <fieldset>
-    <input type="submit" id="searchsubmit" value="Search!" />
+    <input type="submit" id="searchsubmit2" value="Search!" />
     </fieldset>
 </form>
 </div>

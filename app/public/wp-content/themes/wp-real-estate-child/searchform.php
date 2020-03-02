@@ -12,14 +12,14 @@
     <!-- PASSING THIS TO TRIGGER THE ADVANCED SEARCH RESULT PAGE FROM functions.php -->
     <input type="hidden" name="search" value="property">
     <fieldset>
-    <input type="text" value="<?php echo (isset($_GET['name'])) ? $_GET['name'] : ''?>" placeholder="<?php _e( 'Property Name', 'wp-real-estate' ); ?>" name="name" id="name" />
+    <input type="text" value="<?php echo (isset($_GET['name'])) ? $_GET['name'] : ''?>" placeholder="<?php _e( 'Property Address', 'wp-real-estate' ); ?>" name="name" id="name" />
     </fieldset>
     <fieldset>
     <input type="text" value="<?php echo (isset($_GET['area'])) ? $_GET['area'] : ''?>" placeholder="<?php _e( 'Property Area', 'wp-real-estate' ); ?>" name="area" id="area" />
     </fieldset>
 
 	<fieldset>
-	<label for="listing_type" class=""><?php _e( 'Tag: ', 'wp-real-estate' ); ?></label>
+	<label for="listing_type" class=""><?php _e( 'Option: ', 'wp-real-estate' ); ?></label>
     <select name="listing_type" id="listing_type">
     <?php 
       $terms = get_terms( array(
@@ -60,12 +60,12 @@
 	</fieldset>
 
     <fieldset>
-    <label for="mincost" class=""><?php _e( 'Cost (Min) : ', 'wp-real-estate' ); ?></label>
+    <label for="mincost" class=""><?php _e( 'Price (Min) : ', 'wp-real-estate' ); ?></label>
     <input type="number" step="0.1" value="<?php echo (isset($_GET['mincost'])) ? $_GET['mincost'] : ''?>" placeholder="<?php _e( '240000 (no symbols)', 'wp-real-estate' ); ?>" name="mincost" id="mincost" />
     </fieldset>
 
     <fieldset>
-    <label for="maxcost" class=""><?php _e( 'Cost (Max) : ', 'wp-real-estate' ); ?></label>
+    <label for="maxcost" class=""><?php _e( 'Price (Max) : ', 'wp-real-estate' ); ?></label>
     <input type="number" step="0.1" value="<?php echo (isset($_GET['maxcost'])) ? $_GET['maxcost'] : ''?>" placeholder="<?php _e( '240000 (no symbols)', 'wp-real-estate' ); ?>" name="maxcost" id="maxcost" />
     </fieldset>
 
