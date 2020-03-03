@@ -1,6 +1,7 @@
 <?php if (has_header_image() & is_front_page()) : ?>
 
-    <div id="header-image" class="container">
+    <div class="container">
+        <h1 class="title-font">Selected objects</h1>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
         <?php
@@ -15,13 +16,16 @@
                    $selected = get_post_meta(get_the_ID(), 'selected', true); ?>
                          <?php if ($selected === "Yes") : ?>
                          <div class="carousel-item <?php if ($query->current_post == 0) : ?>active<?php endif; ?>">
-                           <img class="d-block w-100" src="<?php echo the_post_thumbnail_url(); ?>" alt="<?php echo the_title();?>">
-                           <div class="carousel-caption d-none d-md-block">
-                               <h2>
+                           <img class="d-block w-100" src="<?php echo the_post_thumbnail_url(); ?>" alt="Image of <?php echo the_title();?>">
+                           <div class="carousel-caption d-none d-md-block selected-info">
+                               <h2 class="">
                                    <a href="<?php echo get_permalink(get_the_ID()); ?>">
                                        <?php echo the_title(); ?>
                                    </a>
                                </h2>
+                                   <h4>Price of house: <?php echo get_post_meta(get_the_ID(), 'price', true); ?></h4>
+                                   <h4>Rooms: <?php echo get_post_meta(get_the_ID(), 'rooms', true); ?></h4>
+                                   <h4>M^2: <?php echo get_post_meta(get_the_ID(), 'm²', true); ?></h4>
                            </div>
                          </div>
                          <?php
