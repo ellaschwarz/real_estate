@@ -112,11 +112,19 @@
 }
 
 .selected-info {
-    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
 }
-.selected-info > h2 > a{
-    color: azure;
+.selected-info > h2 > a {
+    color: red;
+    text-shadow: 2px 2px #000000;
 }
 .selected-info > h2 > a:hover{
     color: blue;
+}
+.carousel-inner, .carousel-item {
+    height: 500px;
+}
+.selected-info > h4 {
+    text-shadow: 2px 2px #000000;
 }

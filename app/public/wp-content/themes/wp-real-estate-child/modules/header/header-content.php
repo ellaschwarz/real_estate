@@ -10,15 +10,16 @@
                 'posts_per_page' => -1,
             ];
             $query = new WP_Query( $args );
+            $firstIteration = 0;
             if( $query->have_posts() ):
                while( $query->have_posts() ) :
                    $query->the_post();
                    $selected = get_post_meta(get_the_ID(), 'selected', true); ?>
                          <?php if ($selected === "Yes") : ?>
-                         <div class="carousel-item <?php if ($query->current_post == 0) : ?>active<?php endif; ?>">
+                         <div class="carousel-item <?php if ($firstIteration == 0) : ?>active<?php $firstIteration++; endif; ?>">
                            <img class="d-block w-100" src="<?php echo the_post_thumbnail_url(); ?>" alt="Image of <?php echo the_title();?>">
                            <div class="carousel-caption d-none d-md-block selected-info">
-                               <h2 class="">
+                               <h2>
                                    <a href="<?php echo get_permalink(get_the_ID()); ?>">
                                        <?php echo the_title(); ?>
                                    </a>
