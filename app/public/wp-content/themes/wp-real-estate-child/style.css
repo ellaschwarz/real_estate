@@ -67,7 +67,7 @@
 
 .post:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
- 
+
 }
 
 /* display: inline-block;
@@ -83,7 +83,7 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 
 
  /** Sidebar **/
- 
+
  .sidebar a {
     color: var(--black);
 }
@@ -139,7 +139,7 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 .widgettitle{
     font-size: 18px;
     font-weight: lighter;
-    border-bottom: solid 1px #e1e1e1;   
+    border-bottom: solid 1px #e1e1e1;
     padding-bottom: 10px;
 }
 
@@ -150,15 +150,31 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 .info_container .object_td{
     font-weight: bold;
-    color: rgba(230, 115, 48, 0.966); 
+    color: rgba(230, 115, 48, 0.966);
 
+.selected-info {
+    display: flex;
+    justify-content: center;
+}
+.selected-info > h2 > a {
+    color: red;
+    text-shadow: 2px 2px #000000;
+}
+.selected-info > h2 > a:hover{
+    color: blue;
+}
+.carousel-inner, .carousel-item {
+    height: 500px;
+}
+.selected-info > h4 {
+    text-shadow: 2px 2px #000000;
 }
  /** search page **/
 .photo {
 	background-color: #fff;
 	display: block;
 	float: left;
-	width: 50%;	
+	width: 50%;
 }
 
 /** SEARCH FORM **/
@@ -167,7 +183,7 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     margin-right: -100%;
     max-width: 413px;
     width:100%;
-    
+
 }
 #property-search-form-child form fieldset {
     position: relative;
@@ -195,7 +211,7 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 	border:none;
 	outline: none;
     color: #fff;
-	
+
 }
 #property-search-form form{
     width: 100%;
