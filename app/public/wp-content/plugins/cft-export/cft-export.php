@@ -192,6 +192,28 @@ acf_add_local_field_group(array(
 			'layout' => 'horizontal',
 			'return_format' => 'value',
 		),
+		array(
+			'key' => 'field_5e552e17e9fc1',
+			'label' => 'Broker',
+			'name' => 'broker',
+			'type' => 'user',
+			'instructions' => 'Select a broker for this object',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'role' => array(
+				0 => 'editor',
+				1 => 'administrator',
+				2 => 'author',
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'array',
+		),
 	),
 	'location' => array(
 		array(
