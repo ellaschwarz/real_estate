@@ -37,9 +37,7 @@ if ($object ->have_posts()) : ?>
 <?php endif; ?>
 
 
-<?php 
-pagination_nav();
-get_sidebar(); ?>
+<?php pagination_nav();?>
+
 <div style = "clear:both"></div>	
-<?php 
-get_footer(); ?>
+<?php get_footer(); ?>

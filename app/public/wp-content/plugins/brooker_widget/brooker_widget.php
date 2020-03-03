@@ -60,7 +60,7 @@ class Realestate_Broker_Widget extends WP_Widget
             $cards .= '<img class="brooker-image" src="' . $author_avatar . '" alt="brooker">';
             $cards .= "<div class='class-content'>";
             $cards .= "<h4 class='card-header'>Brooker</h4>";
-            $cards .= "<p>$author->user_nicename</p>";
+            $cards .= "<p>$author->display_name</p>";
             $cards .= "<h4 class='card-header'>Email</h4>";
             $cards .= "<p>$author->user_email</p>";
             $cards .= "</div>";

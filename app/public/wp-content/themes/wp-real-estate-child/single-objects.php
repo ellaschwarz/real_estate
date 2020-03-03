@@ -14,7 +14,7 @@ get_header();
 ?>
 
 <div id="primary" class="content-area">
-<main id="main" class="site-main">
+    <main id="main" class="site-main">
 
 <?php
 
@@ -75,20 +75,19 @@ while (have_posts()) :
     ?>
       </table>
      </div> <!-- info_container -->
-     </div> <!-- main_container -->
-     <?php
-
+    </div> <!-- main_container -->
+    <?php
     the_post_navigation();
-
-// If comments are open or we have at least one comment, load up the comment template.
+    
+    // If comments are open or we have at least one comment, load up the comment template.
     if (comments_open() || get_comments_number()) :
         comments_template();
     endif;
 endwhile; // End of the loop.
 ?>
 
+
 </main><!-- #main -->
 </div><!-- #primary -->
 
-<?php
-get_footer();
+<?php get_footer();
