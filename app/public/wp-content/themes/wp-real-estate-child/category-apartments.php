@@ -16,7 +16,7 @@ Template Name: All apartments
 $args = [
      'post__in' => $object_id,
      'post_type' => 'objects',
-     'posts_per_page' => 5, 
+     //'posts_per_page' => 5, 
      'category_name' => 'apartments' // get posts by category name
 
 
