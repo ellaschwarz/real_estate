@@ -6,11 +6,11 @@ Template Name: All apartments
 
 <?php get_header();
 
-// <?php
-// query_posts(array(
-// 'category_name' => 'my-category-slug', // get posts by category name
-// 'posts_per_page' => -1 // all posts
-// ));
+
+
+echo get_cat_name(3);
+
+
 
 
 $args = [
