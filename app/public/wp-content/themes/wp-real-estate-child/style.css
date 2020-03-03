@@ -67,7 +67,7 @@
 
 
  /** Sidebar **/
- 
+
  .sidebar a {
     color: var(--black);
 }
@@ -111,3 +111,12 @@
     width: 29.4118%;
 }
 
+.selected-info {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.selected-info > h2 > a{
+    color: azure;
+}
+.selected-info > h2 > a:hover{
+    color: blue;
+}
