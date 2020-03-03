@@ -154,18 +154,28 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 /* Front page carousel */
 .selected-info > h2 > a {
-    color: red;
+    color: lightblue;
     text-shadow: 2px 2px #000000;
 }
 .selected-info > h2 > a:hover{
     color: blue;
 }
-.carousel-inner, .carousel-item {
-    height: 600px;
+.carousel-inner, .carousel-item, .carousel-item > img {
+    height: 500px;
 }
 .selected-info > h4 {
     text-shadow: 2px 2px #000000;
 }
+.carousel-caption {
+    left: 0%;
+    right: 0%;
+    width: 100% !important;
+    margin-bottom: -20px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+@media only screen and (min-width: 768px) {
+    .carousel-caption{ left: 0% !important; right: 0% !important; width: 100%; padding: 0px !important;}
  /** search page **/
 .photo {
 	background-color: #fff;
