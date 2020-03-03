@@ -35,11 +35,9 @@ if ($object ->have_posts()) : ?>
           </div>
      <?php endwhile; ?>
      <?php
+     
 pagination_nav($object);
-// next_posts_link() usage with max_num_pages
-next_posts_link( 'Older Entries', $object->max_num_pages );
-previous_posts_link( 'Newer Entries' );
-?>
-<?php endif; ?>
+
+endif; ?>
 <div style = "clear:both"></div>	
 <?php get_footer(); ?>

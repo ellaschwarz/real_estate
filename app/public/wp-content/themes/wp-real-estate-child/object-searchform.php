@@ -10,14 +10,10 @@
 <div class="psf-inner">	
 <form method="get" id="property-searchform" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
     <!-- PASSING THIS TO TRIGGER THE ADVANCED SEARCH RESULT PAGE FROM functions.php -->
-    <input type="hidden" name="search" value="property">
+    <input type="hidden" name="search" value="object">
     <fieldset>
-    <label for="name" class=""><?php _e( 'Address: ', 'wp-real-estate' ); ?></label>
-    <input type="text" value="<?php echo (isset($_GET['name'])) ? $_GET['name'] : ''?>" placeholder="<?php _e( 'Property Address', 'wp-real-estate' ); ?>" name="name" id="name" />
-    </fieldset>
-    <fieldset>
-    <label for="area" class=""><?php _e( 'Area: ', 'wp-real-estate' ); ?></label>
-    <input type="text" value="<?php echo (isset($_GET['area'])) ? $_GET['area'] : ''?>" placeholder="<?php _e( 'Property Area', 'wp-real-estate' ); ?>" name="area" id="area" />
+    <label for="name" class=""><?php _e( 'Search: ', 'wp-real-estate' ); ?></label>
+    <input type="text" value="<?php echo (isset($_GET['name'])) ? $_GET['name'] : ''?>" placeholder="<?php _e( 'Property Address, Area or City', 'wp-real-estate' ); ?>" name="name" id="name" />
     </fieldset>
 
 	<fieldset>
@@ -72,7 +68,7 @@
     </fieldset>
 
     <fieldset>
-    <input type="submit" id="searchsubmit2" value="Search!" />
+    <input type="submit" id="searchsubmit" value="Search!" />
     </fieldset>
 </form>
 </div>

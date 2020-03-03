@@ -9,7 +9,6 @@
  */
 
 $_name = $_GET['name'] != '' ? esc_html($_GET['name']) : '';
-$_area = $_GET['area'] != '' ? esc_html($_GET['area']) : '';
 $_minbed = $_GET['minbed'] != '' ? esc_html($_GET['minbed']) : '1';
 $_maxbed = $_GET['maxbed'] != '' ? esc_html($_GET['maxbed']) : '6';
 $_cmin = $_GET['mincost'] != '' ? esc_html($_GET['mincost']) : '1';
@@ -32,16 +31,21 @@ $p_args = array(
             'value' => array($_minbed,$_maxbed),
             'compare' => 'BETWEEN',
         ),
-        array(
+        array(array(
             'key' => 'address',
             'value' => $_name,
             'compare' => 'LIKE'
-        ),
+        ),'relation' => 'OR',
         array(
             'key' => 'area',
-            'value' => $_area,
+            'value' => $_name,
             'compare' => 'LIKE'
-        ),
+        ),'relation' => 'OR',
+        array(
+            'key' => 'city',
+            'value' => $_name,
+            'compare' => 'LIKE'
+        )),
         array(
             'key' => 'price',
             'value' => array($_cmin,$_cmax),
@@ -53,7 +57,7 @@ $p_args = array(
         array(
             'taxonomy' => 'post_tag',
             'field' => 'slug',
-            'terms' => $_type,
+            'terms' => array($_type),
             'include_children' => true,
             'operator' => 'IN',
         ),
@@ -95,6 +99,11 @@ $propSearchQuery = new WP_Query($p_args);
                         <!-- post details -->
                         <div class='col-md-7'>
                             <div class="container-fluid info_container">
+                               <div class='row'>
+                                    <p class="col-md-6 object_td">  <strong><?php _e('City: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"><?php the_field('city');?></p>
+                                </div>
+
                                 <div class='row'>
                                     <p class="col-md-6 object_td">  <strong><?php _e('Area: ', 'html5blank');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('area');?></p>
@@ -123,6 +132,11 @@ $propSearchQuery = new WP_Query($p_args);
                                 <div class='row'>
                                     <p class="col-md-6 object_td"><strong><?php _e('Category: ', 'html5blank');?></strong> </p>
                                     <p class="col-md-6"> <?php the_category(', '); // Separated by commas ?></p>
+                                </div>
+
+                                <div class='row'>
+                                    <p class="col-md-6 object_td"><strong><?php _e('Tags: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6"> <?php the_tags(''); // Separated by commas ?></p>
                                 </div>
                             
                             </div>
