@@ -37,9 +37,7 @@ function estate_widgets_broker(){
 add_action('widgets_init','estate_widgets');
 add_action('widgets_init','estate_widgets_broker');
 
-function pagination_nav($wp_query) {
-    
-;   ?>
+function pagination_nav($wp_query) { ?>
         <nav class="pagination" role="navigation">
             <div class="nav-previous"><?php next_posts_link( '&larr; Older posts', $wp_query->max_num_pages ); ?></div>
             <div class="nav-next"><?php previous_posts_link( 'Newer posts &rarr;' ); ?></div>

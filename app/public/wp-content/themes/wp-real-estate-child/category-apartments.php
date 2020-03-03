@@ -39,10 +39,6 @@ if ($object ->have_posts()) : ?>
      pagination_nav($object);
  endif; ?>
 
-
-<?php 
-pagination_nav();
-get_sidebar(); ?>
 <div style = "clear:both"></div>	
 <?php 
 get_footer(); ?>
