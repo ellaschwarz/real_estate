@@ -5,18 +5,18 @@ Template Name: All posts
 ?>
 
 <?php get_header();
-
-// <?php
+// 
 // query_posts(array(
 // 'category_name' => 'my-category-slug', // get posts by category name
 // 'posts_per_page' => -1 // all posts
 // ));
-
-
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = [
-     'post__in' => $object_id,
+   //  'post__in' => $object_id,
      'post_type' => 'objects',
     // 'posts_per_page' => 5 
+    'posts_per_page' => 5,
+    'paged' => $paged,
 
  ];
 
@@ -34,10 +34,12 @@ if ($object ->have_posts()) : ?>
               </div>
           </div>
      <?php endwhile; ?>
+     <?php
+
+// next_posts_link() usage with max_num_pages
+next_posts_link( 'Older Entries', $object->max_num_pages );
+previous_posts_link( 'Newer Entries' );
+?>
 <?php endif; ?>
-
-
-<?php pagination_nav();?>
-
 <div style = "clear:both"></div>	
 <?php get_footer(); ?>

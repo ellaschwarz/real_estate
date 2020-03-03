@@ -35,8 +35,9 @@ if ($object ->have_posts()) : ?>
               
               </div>
           </div>
-     <?php endwhile; ?>
-<?php endif; ?>
+     <?php endwhile; 
+     pagination_nav($object);
+ endif; ?>
 
 
 <?php 
