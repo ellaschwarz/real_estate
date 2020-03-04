@@ -68,14 +68,75 @@
 /* ALL OBJECTS ON CATEGORY PAGES */
 
 .post {
-    width: 50%;
-    height: 300px;
+    
+    height: 340px;
+    position: relative;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr 40%;
+
 }
 
 .post:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 
 }
+
+.photo_category{
+    float: left;
+    /* height: 100%;
+    width: 70%; */
+    object-fit: cover;
+    position: absolute;
+}
+
+.entry_post {
+    text-align: center;
+    grid-column: 2/3;
+
+}
+
+.selected_post{
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+
+.carousel_category{
+
+}
+
+.entry{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.title_area_city{
+    grid-row: 1/2;
+    grid-column: 1/4;
+}
+
+.price {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+.m2 {
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+.rooms {
+    grid-row: 2/3;
+    grid-column: 3/4;
+}
+
+
 
 /* ALL OBJECTS ON CATEGORY PAGES */
 
