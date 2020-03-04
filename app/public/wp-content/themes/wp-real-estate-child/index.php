@@ -18,12 +18,12 @@ get_header(); ?>
 		<?php if (is_home() ) : ?>
 			<div class="col-md-12 index-title"><div class="section-title title-font"><?php _e('Latest Listings','wp-real-estate'); ?></div></div>
 		<?php endif; ?>
-        <?php /*$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;*/
-        global $paged;
+        <?php
+        //$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
         $args = [
             'post_type'      => 'objects',
-            //'posts_per_page' => 9,
+            'posts_per_page' => 6,
             'orderby'        => 'date',
             'paged'          => $paged,
         ];
@@ -39,13 +39,13 @@ get_header(); ?>
 					 */
 					do_action('wpre_blog_layout');
 
+                    wp_reset_postdata();
 				?>
 
 			<?php endwhile; ?>
 
 			<?php
-            wp_reset_postdata();
-			pagination_nav($objectsQuery); ?>
+            pagination_nav($objectsQuery); ?>
 
 		<?php else : ?>
 
