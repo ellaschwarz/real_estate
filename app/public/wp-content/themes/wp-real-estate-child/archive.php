@@ -11,8 +11,15 @@ get_header(); ?>
 
 	<div id="primary" class="content-areas <?php apply_filters('wpre_primary-width','wpre_primary_class') ?>">
 		<main id="main" class="site-main" role="main">
+		<?php 
+		$args = [
+        'post__in' => $object_id,
+        'post_type' => 'objects',
+    ];
 
-		<?php if ( have_posts() ) : ?>
+		$object = new WP_query($args);
+		
+		 if ( $object->have_posts() ) : ?>
 
 			<header class="page-header">
 				<?php
@@ -22,7 +29,7 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( $object->have_posts() ) : $object->the_post(); ?>
 
 				<?php
 					/* Include the Post-Format-specific template for the content.

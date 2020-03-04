@@ -38,6 +38,7 @@ if ($object ->have_posts()) : ?>
      
 pagination_nav($object);
 
+
 endif; ?>
 <div style = "clear:both"></div>	
 <?php get_footer(); ?>

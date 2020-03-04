@@ -10,24 +10,30 @@
 
 $_name = $_GET['name'] != '' ? esc_html($_GET['name']) : '';
 $_minbed = $_GET['minbed'] != '' ? esc_html($_GET['minbed']) : '1';
-$_maxbed = $_GET['maxbed'] != '' ? esc_html($_GET['maxbed']) : '6';
+$_maxbed = $_GET['maxbed'] != '' ? esc_html($_GET['maxbed']) : '10';
 $_cmin = $_GET['mincost'] != '' ? esc_html($_GET['mincost']) : '1';
 $_cmax = $_GET['maxcost'] != '' ? esc_html($_GET['maxcost']) : '99999999999';
 $_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : '';
 
-get_header();?>
-<?php get_sidebar('left');?>
+$_list = explode(',',$_type);
+
+get_header();
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+get_sidebar('left');?>
 <div id="primary" class="content-area <?php apply_filters('wpre_primary-width', 'wpre_primary_class')?>">
     <main id="main" class="site-main" role="main">
 
         <?php
 $p_args = array(
-    'post_type' => 'objects', // your CPT
+    'post_type' => 'objects', 
+    'paged' => $paged,
+    // your CPT
     // looks into everything with the keyword from your 'name field'
     'meta_query' => array(
         'relation' => 'AND',
         array(
             'key' => 'rooms',
+            'type' => 'numeric',
             'value' => array($_minbed,$_maxbed),
             'compare' => 'BETWEEN',
         ),
@@ -48,21 +54,23 @@ $p_args = array(
         )),
         array(
             'key' => 'price',
+            'type' => 'numeric',
             'value' => array($_cmin,$_cmax),
             'compare' => 'BETWEEN',
         ),
-    ),
+    ), 
     'tax_query' => array(
         'relation' => 'AND',
         array(
             'taxonomy' => 'post_tag',
             'field' => 'slug',
-            'terms' => array($_type),
+            'terms' => $_list,
             'include_children' => true,
-            'operator' => 'IN',
+            'operator' => 'AND',
         ),
     ),
 );
+
 $propSearchQuery = new WP_Query($p_args);
 
 ?>
@@ -151,7 +159,7 @@ $propSearchQuery = new WP_Query($p_args);
         <?php endwhile;?>
 
         <?php wpre_pagination();?>
-
+        
         <?php else: ?>
 
         <?php _e('No Properties were found with specified parameters. Please search using different parameters.', 'wp-real-estate')?>

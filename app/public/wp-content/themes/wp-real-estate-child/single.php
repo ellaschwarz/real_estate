@@ -19,10 +19,8 @@ get_header(); ?>
 				if ( comments_open() || get_comments_number() ) :
 					comments_template();
 				endif;
-			?>
-			<?php 
-			
-		<?php endwhile; // end of the loop. ?>
+				
+			 endwhile; // end of the loop. ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
