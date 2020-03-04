@@ -54,10 +54,7 @@ function pagination_nav($wp_query) { ?>
             <div class="nav-next"><?php next_posts_link( 'Next &rarr;', $wp_query->max_num_pages ); ?></div>
             <div class="nav-previous"><?php previous_posts_link( '&larr; Previous' ); ?></div>
         </nav>
-<?php }  ?>
-<!-- 
-<?php
-
+<?php } 
 function my_pagination_rewrite() {
     add_rewrite_rule('/apartments/page/?([0-9]{1,})/?$', 'category-apartments.php?category_name=blog&paged=$matches[1]', 'top');
 }
@@ -71,12 +68,7 @@ add_action('init', 'my_pagination_rewrite');
 
 //     }
 
-<<<<<<< HEAD
-});
- ?> -->
-=======
 // });
- ?>
->>>>>>> 9d45bd65ea742401905e800033164fc60d623c9c
+
 
 
