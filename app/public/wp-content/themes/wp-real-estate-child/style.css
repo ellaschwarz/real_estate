@@ -127,17 +127,6 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     width: 30%;
     border-radius: 5px;
 }
-.container {
-    max-width: 120rem; /** 1200px **/
-    width: 95%;
-    margin: 0 auto;
-}
-
-.widget-area {
-    float: right;
-    max-width: 413px;
-    width: 29.4118%;
-}
 .a {
     float: left;
     margin-right: -100%;
