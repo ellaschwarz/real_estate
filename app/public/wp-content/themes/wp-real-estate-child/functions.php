@@ -44,4 +44,17 @@ function pagination_nav($wp_query) { ?>
         </nav>
 <?php }  ?>
 
+<?php
+
+add_action( 'pre_get_posts', function ( $q ) {
+
+    if( !is_admin() && $q->is_main_query() && $q->is_post_type_archive( 'objects' ) ) {
+
+        $q->set( 'posts_per_page', 5 );
+
+    }
+
+});
+ ?>
+
 
