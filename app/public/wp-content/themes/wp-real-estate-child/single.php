@@ -21,7 +21,7 @@ get_header(); ?>
 				endif;
 			?>
 			<?php 
-			wp_link_pages(); ?>
+			
 		<?php endwhile; // end of the loop. ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->

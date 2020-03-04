@@ -11,6 +11,7 @@ Template Name: All posts
 <h1> <?php echo get_cat_name(4); ?> </h1>
 
 <?php
+global $paged;
 
 
 $args = [
