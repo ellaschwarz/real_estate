@@ -1,17 +1,20 @@
 <?php
 /*
 Template Name: All apartments
+
 */
+
+
 ?>
 
-<?php get_header();
+<?php echo get_header(); ?>
 
-// <?php
-// query_posts(array(
-// 'category_name' => 'my-category-slug', // get posts by category name
-// 'posts_per_page' => -1 // all posts
-// ));
 
+
+<h1> <?php echo get_cat_name(3); ?> </h1>
+
+
+<?php
 
 $args = [
      'post__in' => $object_id,
@@ -36,8 +39,10 @@ if ($object ->have_posts()) : ?>
               
               </div>
           </div>
-     <?php endwhile; 
-  
+     <?php endwhile; ?>
+     <?php  
+     pagination_nav($object);
+
  endif; ?>
 
 <div style = "clear:both"></div>	

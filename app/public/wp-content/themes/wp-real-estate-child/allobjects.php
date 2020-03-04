@@ -17,14 +17,14 @@ $args = [
     // 'posts_per_page' => 5 
     'posts_per_page' => 5,
     'paged' => $paged,
-
  ];
 
  $object = new WP_query($args);
 
 
 if ($object ->have_posts()) : ?>
-     <?php while($object ->have_posts()) : $object ->the_post(); ?>
+     <?php while($object ->have_posts()) :
+          $object ->the_post(); ?>
           <div class="post"> 
                <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                <div class="entry">	

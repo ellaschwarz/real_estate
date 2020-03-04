@@ -39,9 +39,22 @@ add_action('widgets_init','estate_widgets_broker');
 
 function pagination_nav($wp_query) { ?>
         <nav class="pagination" role="navigation">
-            <div class="nav-next"><?php next_posts_link( 'Newer posts &rarr;', $wp_query->max_num_pages ); ?></div>
-            <div class="nav-previous"><?php previous_posts_link( '&larr; Older posts' ); ?></div>
+            <div class="nav-next"><?php next_posts_link( 'Next &rarr;', $wp_query->max_num_pages ); ?></div>
+            <div class="nav-previous"><?php previous_posts_link( '&larr; Previous' ); ?></div>
         </nav>
 <?php }  ?>
+
+<?php
+
+add_action( 'pre_get_posts', function ( $q ) {
+
+    if( !is_admin() && $q->is_main_query() && $q->is_post_type_archive( 'objects' ) ) {
+
+        $q->set( 'posts_per_page', 5 );
+
+    }
+
+});
+ ?>
 
 
