@@ -17,7 +17,7 @@
     </fieldset>
 
 	<fieldset>
-    <label for="listing_type" class=""><?php _e( 'Option: ', 'wp-real-estate' ); ?></label>
+    <label for="listing_type" class=""><?php _e( 'Options: ', 'wp-real-estate' ); ?></label>
     <input type="text" value="<?php echo (isset($_GET['listing_type'])) ? $_GET['listing_type'] : ''?>" placeholder="<?php _e( 'Balcony,city,etc.', 'wp-real-estate' ); ?>" name="listing_type" id="tags" />
   <!--   <select name="listing_type" id="listing_type">
     <?php 

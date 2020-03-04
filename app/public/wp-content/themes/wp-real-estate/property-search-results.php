@@ -15,9 +15,7 @@ $_cmin = $_GET['mincost'] != '' ? esc_html($_GET['mincost']) : '1';
 $_cmax = $_GET['maxcost'] != '' ? esc_html($_GET['maxcost']) : '99999999999';
 $_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : '';
 
-echo var_dump($_type);
 $_list = explode(',',$_type);
-echo var_dump($_list);
 
 get_header();
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -35,6 +33,7 @@ $p_args = array(
         'relation' => 'AND',
         array(
             'key' => 'rooms',
+            'type' => 'numeric',
             'value' => array($_minbed,$_maxbed),
             'compare' => 'BETWEEN',
         ),
@@ -55,12 +54,13 @@ $p_args = array(
         )),
         array(
             'key' => 'price',
+            'type' => 'numeric',
             'value' => array($_cmin,$_cmax),
             'compare' => 'BETWEEN',
         ),
     ), 
     'tax_query' => array(
-        'relation' => 'OR',
+        'relation' => 'AND',
         array(
             'taxonomy' => 'post_tag',
             'field' => 'slug',
@@ -70,6 +70,7 @@ $p_args = array(
         ),
     ),
 );
+
 $propSearchQuery = new WP_Query($p_args);
 
 ?>
