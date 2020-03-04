@@ -65,10 +65,19 @@
 
 /* OBJECTS */
 
+/* ALL OBJECTS ON CATEGORY PAGES */
+
+.post {
+    width: 50%;
+    height: 300px;
+}
+
 .post:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 
 }
+
+/* ALL OBJECTS ON CATEGORY PAGES */
 
 /* display: inline-block;
 transition-duration: 0.3s;
@@ -144,14 +153,14 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
  /** Lgh container **/
-.info_container{
+/* .info_container{
     font-size: 2rem;
 
 }
 .info_container .object_td{
     font-weight: bold;
     color: rgba(230, 115, 48, 0.966);
-}
+} */
 /* Front page carousel */
 .selected-info > h2 > a {
     color: lightblue;

@@ -32,7 +32,8 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php wpre_pagination(); ?>
+			<?php 
+			pagination_nav($object); ?>
 
 		<?php else : ?>
 

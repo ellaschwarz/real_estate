@@ -41,6 +41,7 @@ $args = [
     "rewrite" => [ "slug" => "objects", "with_front" => true ],
     "query_var" => true,
     "supports" => [ "title", "editor", "thumbnail" ],
+    'has_archive' => true,
     "taxonomies" => [ "category", "post_tag" ],
 ];
 
