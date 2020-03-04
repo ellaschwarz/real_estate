@@ -17,23 +17,35 @@ get_header(); ?>
 		<main id="main" class="site-main <?php apply_filters('wpre_main-class', 'wpre_get_main_class'); ?>" role="main">
 		<?php if (is_home() ) : ?>
 			<div class="col-md-12 index-title"><div class="section-title title-font"><?php _e('Latest Listings','wp-real-estate'); ?></div></div>
-		<?php endif; ?>	
-		<?php if ( have_posts() ) : ?>
+		<?php endif; ?>
+        <?php /*$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;*/
+        global $paged;
+
+        $args = [
+            'post_type'      => 'objects',
+            //'posts_per_page' => 9,
+            'orderby'        => 'date',
+            'paged'          => $paged,
+        ];
+        $objectsQuery = new WP_Query( $args );
+        ?>
+		<?php if ( $objectsQuery->have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( $objectsQuery->have_posts() ) : $objectsQuery->the_post(); ?>
 
 				<?php
 					/* Include the Post-Format-specific template for the content.
 					 */
-					do_action('wpre_blog_layout'); 
-					
+					do_action('wpre_blog_layout');
+
 				?>
 
 			<?php endwhile; ?>
 
-			<?php 
-			pagination_nav($object); ?>
+			<?php
+            wp_reset_postdata();
+			pagination_nav($objectsQuery); ?>
 
 		<?php else : ?>
 
