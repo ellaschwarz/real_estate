@@ -24,9 +24,9 @@
                                        <?php echo the_title(); ?>
                                    </a>
                                </h2>
-                                   <h4>Price of house: <?php echo get_post_meta(get_the_ID(), 'price', true); ?></h4>
+                                   <h4>Price: <?php echo get_post_meta(get_the_ID(), 'price', true); ?> kr</h4>
                                    <h4>Rooms: <?php echo get_post_meta(get_the_ID(), 'rooms', true); ?></h4>
-                                   <h4>M^2: <?php echo get_post_meta(get_the_ID(), 'm²', true); ?></h4>
+                                   <h4>m²: <?php echo get_post_meta(get_the_ID(), 'm²', true); ?></h4>
                            </div>
                          </div>
                          <?php

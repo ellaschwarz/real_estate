@@ -16,13 +16,15 @@ Template Name: All apartments
 
 <?php
 
+global $paged;
+
+
 $args = [
      'post__in' => $object_id,
      'post_type' => 'objects',
      //'posts_per_page' => 5, 
-     'category_name' => 'apartments' // get posts by category name
-
-
+     'category_name' => 'apartments', // get posts by category name
+     'paged' => $paged
  ];
 
  $object = new WP_query($args);
@@ -39,7 +41,8 @@ if ($object ->have_posts()) : ?>
               </div>
           </div>
      <?php endwhile; ?>
-     <?php  
+     <?php 
+     my_pagination_rewrite(); 
      pagination_nav($object);
 
  endif; ?>

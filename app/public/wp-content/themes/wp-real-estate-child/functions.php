@@ -46,15 +46,20 @@ function pagination_nav($wp_query) { ?>
 
 <?php
 
-add_action( 'pre_get_posts', function ( $q ) {
+function my_pagination_rewrite() {
+    add_rewrite_rule('/apartments/page/?([0-9]{1,})/?$', 'category-apartments.php?category_name=blog&paged=$matches[1]', 'top');
+}
+add_action('init', 'my_pagination_rewrite');
 
-    if( !is_admin() && $q->is_main_query() && $q->is_post_type_archive( 'objects' ) ) {
+// add_action( 'pre_get_posts', function ( $q ) {
 
-        $q->set( 'posts_per_page', 5 );
+//     if( !is_admin() && $q->is_main_query() && $q->is_post_type_archive( 'objects' ) ) {
 
-    }
+//         $q->set( 'posts_per_page', 5 );
 
-});
+//     }
+
+// });
  ?>
 
 
