@@ -10,11 +10,14 @@ Template Name: All posts
 
 <?php
 
+global $paged;
+
 $args = [
      'post__in' => $object_id,
      'post_type' => 'objects',
      //'posts_per_page' => 5, 
-     'category_name' => 'houses' // get posts by category name
+     'category_name' => 'houses', // get posts by category name
+     'paged' => $paged
  ];
 
  $object = new WP_query($args);
@@ -65,7 +68,7 @@ if ($object ->have_posts()) : ?>
      endif;
      endwhile;
      pagination_nav($object);
-     wp_link_pages();
+     //wp_link_pages();
     
 
 endif; ?>
