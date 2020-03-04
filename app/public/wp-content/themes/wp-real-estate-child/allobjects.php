@@ -16,7 +16,6 @@ $args = [
      'post_type' => 'objects',
     // 'posts_per_page' => 5 
     'posts_per_page' => 5,
-    'paged' => $paged,
 
  ];
 

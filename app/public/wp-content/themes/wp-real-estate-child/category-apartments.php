@@ -17,7 +17,8 @@ $args = [
      'post__in' => $object_id,
      'post_type' => 'objects',
      //'posts_per_page' => 5, 
-     'category_name' => 'apartments' // get posts by category name
+     'category_name' => 'apartments', // get posts by category name
+   
 
 
  ];
@@ -36,7 +37,7 @@ if ($object ->have_posts()) : ?>
               </div>
           </div>
      <?php endwhile; 
-     pagination_nav($object);
+  
  endif; ?>
 
 <div style = "clear:both"></div>	
