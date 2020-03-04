@@ -64,7 +64,7 @@ if ($object ->have_posts()) : ?>
                  <div class='photo_category'>
                                 <?php the_post_thumbnail(array(512, 340)); ?>
                </div>
-               <div class="entry_post">                                 
+               <div class="entry_post">                            
                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                     <h4><?php echo get_post_meta(get_the_ID(), 'area', true); ?> , 
                                 <?php echo get_post_meta(get_the_ID(), 'city', true); ?> </h4>
