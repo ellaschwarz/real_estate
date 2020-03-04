@@ -14,6 +14,7 @@ $_maxbed = $_GET['maxbed'] != '' ? esc_html($_GET['maxbed']) : '10';
 $_cmin = $_GET['mincost'] != '' ? esc_html($_GET['mincost']) : '1';
 $_cmax = $_GET['maxcost'] != '' ? esc_html($_GET['maxcost']) : '99999999999';
 $_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : '';
+
 echo var_dump($_type);
 $_list = explode(',',$_type);
 echo var_dump($_list);

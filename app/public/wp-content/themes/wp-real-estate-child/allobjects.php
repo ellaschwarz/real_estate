@@ -16,6 +16,7 @@ $args = [
      'post_type' => 'objects',
     // 'posts_per_page' => 5 
     'posts_per_page' => 5,
+    'paged' => $paged,
 
  ];
 
@@ -36,6 +37,7 @@ if ($object ->have_posts()) : ?>
      <?php
      
 pagination_nav($object);
+
 
 endif; ?>
 <div style = "clear:both"></div>	
