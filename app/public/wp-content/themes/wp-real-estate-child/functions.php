@@ -51,6 +51,19 @@ function my_pagination_rewrite() {
 }
 add_action('init', 'my_pagination_rewrite');
 
+function homepage_main_query( $query ) {
+  // do not alter the query on wp-admin pages and only alter it if it's the main query
+  if (!is_admin() && $query->is_main_query()){
+
+    //Check if the query is performed on the homepage
+    if(is_home()){
+      $query->set('posts_per_page', 5);
+      $query->set('post_type', 'objects');
+    }
+  }
+}
+add_action( 'pre_get_posts', 'homepage_main_query' );
+
 // add_action( 'pre_get_posts', function ( $q ) {
 
 //     if( !is_admin() && $q->is_main_query() && $q->is_post_type_archive( 'objects' ) ) {
@@ -61,5 +74,3 @@ add_action('init', 'my_pagination_rewrite');
 
 // });
  ?>
-
-

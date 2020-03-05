@@ -18,25 +18,27 @@ get_header(); ?>
 			<div class="col-md-12 index-title"><div class="section-title title-font"><?php _e('Latest Listings','wp-real-estate'); ?></div></div>
 		<?php endif; ?>
         <?php
+        /*
         $currentPaged = get_query_var('paged');
-
         $args = [
             'post_type'      => 'objects',
             'posts_per_page' => 5,
             'paged'          => $currentPaged,
-            /*Change paged to a number to see it working on the first page.*/
         ];
         $objectsQuery = new WP_Query( $args );
-
+        */
         ?>
-		<?php if ( $objectsQuery->have_posts() ) : ?>
-			<?php while ( $objectsQuery->have_posts() ) : $objectsQuery->the_post(); ?>
+		<?php if ( have_posts() ) : ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 				<?php do_action('wpre_blog_layout'); ?>
 			<?php endwhile;
+            wp_reset_postdata();
 
-            echo paginate_links([
-                'total' => $objectsQuery->max_num_pages
-            ]); ?>
+            the_posts_pagination( [
+	               'mid_size'  => 2,
+	               'prev_text' => __( 'Previous', 'textdomain' ),
+	               'next_text' => __( 'Next', 'textdomain' ),
+                     ] ); ?>
 
 		<?php else : ?>
 
