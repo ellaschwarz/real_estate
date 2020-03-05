@@ -25,8 +25,8 @@ get_header(); ?>
 
             the_posts_pagination( [
 	               'mid_size'  => 2,
-	               'prev_text' => __( 'Previous', 'textdomain' ),
-	               'next_text' => __( 'Next', 'textdomain' ),
+	               'prev_text' => __( 'Previous', 'wp-real-estate' ),
+	               'next_text' => __( 'Next', 'wp-real-estate' ),
                      ] ); ?>
 
 		<?php else : ?>
