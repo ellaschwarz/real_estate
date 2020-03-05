@@ -29,8 +29,6 @@
         <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '4') ? 'selected' : ''?> value="4"><?php _e( '4', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '5') ? 'selected' : ''?> value="5"><?php _e( '5', 'wp-real-estate' ); ?></option>
 		<option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '6') ? 'selected' : ''?> value="6"><?php _e( '6', 'wp-real-estate' ); ?></option>
-        <option <?php echo (isset($_GET['minbed']) && $_GET['minbed'] == '6') ? 'selected' : ''?> value="6"><?php _e( '6', 'wp-real-estate' ); ?></option>
-        <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '6') ? 'selected' : ''?> value="6"><?php _e( '6', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '7') ? 'selected' : ''?> value="7"><?php _e( '7', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '8') ? 'selected' : ''?> value="8"><?php _e( '8', 'wp-real-estate' ); ?></option>
         <option <?php echo (isset($_GET['maxbed']) && $_GET['maxbed'] == '9') ? 'selected' : ''?> value="9"><?php _e( '9', 'wp-real-estate' ); ?></option>

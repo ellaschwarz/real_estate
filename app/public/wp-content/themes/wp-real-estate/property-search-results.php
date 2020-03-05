@@ -7,7 +7,6 @@
  *
  * @package wpre
  */
-
 $_name = $_GET['name'] != '' ? esc_html($_GET['name']) : '';
 $_minbed = $_GET['minbed'] != '' ? esc_html($_GET['minbed']) : '1';
 $_maxbed = $_GET['maxbed'] != '' ? esc_html($_GET['maxbed']) : '10';
@@ -16,9 +15,8 @@ $_cmax = $_GET['maxcost'] != '' ? esc_html($_GET['maxcost']) : '99999999999';
 $_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : '';
 
 $_list = explode(',',$_type);
-
 get_header();
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+global $paged;
 get_sidebar('left');?>
 <div id="primary" class="content-area <?php apply_filters('wpre_primary-width', 'wpre_primary_class')?>">
     <main id="main" class="site-main" role="main">
@@ -26,6 +24,7 @@ get_sidebar('left');?>
         <?php
 $p_args = array(
     'post_type' => 'objects', 
+    'posts_per_page' => 5, 
     'paged' => $paged,
     // your CPT
     // looks into everything with the keyword from your 'name field'
@@ -83,7 +82,6 @@ $propSearchQuery = new WP_Query($p_args);
 
         <?php /* Start the Loop */?>
         <?php while ($propSearchQuery->have_posts()): $propSearchQuery->the_post();?>
-
         <article id="post-<?php the_ID();?>" <?php post_class();?>>
             <div class="grid2-3">
                 <!-- post title -->
@@ -159,11 +157,15 @@ $propSearchQuery = new WP_Query($p_args);
         <?php endwhile;?>
 
         <?php wpre_pagination();?>
-        
+        <?php pagination_nav($propSearchQuery); ?>
+        <?php 
+            next_posts_link( 'Next Entries', $propSearchQuery->max_num_pages );
+            previous_posts_link( 'Previous Entries' );
+        ?>
         <?php else: ?>
-
+        <div class='search-info'>
         <?php _e('No Properties were found with specified parameters. Please search using different parameters.', 'wp-real-estate')?>
-
+        </div>
         <?php endif;?>
 
     </main><!-- #main -->
