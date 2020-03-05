@@ -4,6 +4,11 @@
  Version:      1.0.0
 */
 
+#masthead {
+    box-shadow: 3px 3px 3px rgba(92, 91, 91, 0.6);
+    margin-bottom: 10px;
+}
+
 .cards_group {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -63,13 +68,10 @@
 
 }
 
-/* OBJECTS */
+/* SINGLE OBJECTS */
 
-/* ALL PROPERTIES */
 
-/* ALL PROPERTIES */
-
-/* ALL OBJECTS ON CATEGORY PAGES */
+/* ALL OBJECTS ON ALL CATEGORY PAGES */
 
 .post {
     
@@ -105,7 +107,7 @@
 .selected_post{
     border: 1px solid gray;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
 }
 

@@ -15,9 +15,11 @@ global $paged;
 $args = [
      'post__in' => $object_id,
      'post_type' => 'objects',
-     'posts_per_page' => 5,
+     'posts_per_page' => 1,
      'category_name' => 'houses', // get posts by category name
-     'paged' => $paged
+     //'paged' => $paged,
+     'meta_key' => 'selected',
+     'meta_value' => 'Yes'
  ];
 
  $object = new WP_query($args);
@@ -25,13 +27,10 @@ $args = [
 if ($object ->have_posts()) : ?>
          
           <?php while ($object ->have_posts()) :
-                $object ->the_post();
-                $selected = get_post_meta(get_the_ID(), 'selected', true); ?>
-                         <?php if ($selected === "Yes") : ?>
-                                <?php for ($i=0; $i<1; $i++) { ?>
+                $object ->the_post(); ?>
                          <div class="selected_post"> 
                               <div class="carousel_category">
-                                    <?php the_content(); ?>
+                              <a href="<?php the_permalink(); ?>"><?php the_content(); ?></a>
                          </div>
                          <div class="entry">	
                                    <div class="title_area_city">
@@ -47,22 +46,33 @@ if ($object ->have_posts()) : ?>
                                     wp_reset_postdata(); ?>
                               </div>
                          </div>
-                                <?php };
-                         endif;
-          endwhile;
+          <?php endwhile;
 endif?>
 
+<?php
+
+$args2 = [
+     'post__in' => $object_id,
+     'post_type' => 'objects',
+     'posts_per_page' => 4,
+     'category_name' => 'houses',
+     'paged' => $paged
+ ];
+
+ $object = new WP_query($args2);
+
+?>
 
 <script src="https://kit.fontawesome.com/3a12e18fd4.js" crossorigin="anonymous"></script>
+
 <?php
 if ($object ->have_posts()) : ?>
      <?php while ($object ->have_posts()) :
-            $object ->the_post();
-                 $selected = get_post_meta(get_the_ID(), 'selected', true); ?>
-                         <?php if ($selected === "No") : ?>     
+            $object ->the_post(); ?>
+
             <div class="post"> 
                  <div class='photo_category'>
-                                <?php the_post_thumbnail(array(512, 340)); ?>
+                 <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(array(512, 340)); ?></a>
                </div>
                <div class="entry_post">                            
                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -76,7 +86,6 @@ if ($object ->have_posts()) : ?>
               </div>
           </div>
                                 <?php
-                         endif;
      endwhile;
      pagination_nav($object);
 endif; ?>
