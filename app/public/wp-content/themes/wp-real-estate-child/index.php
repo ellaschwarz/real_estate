@@ -10,7 +10,6 @@
  *
  * @package wpre
  */
-
 get_header(); ?>
 
 	<div id="primary" class="content-areas <?php apply_filters('wpre_primary-width','wpre_primary_class') ?>">
@@ -19,33 +18,25 @@ get_header(); ?>
 			<div class="col-md-12 index-title"><div class="section-title title-font"><?php _e('Latest Listings','wp-real-estate'); ?></div></div>
 		<?php endif; ?>
         <?php
-        //$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+        $currentPaged = get_query_var('paged');
 
         $args = [
             'post_type'      => 'objects',
-            'posts_per_page' => 6,
-            'orderby'        => 'date',
-            'paged'          => $paged,
+            'posts_per_page' => 5,
+            'paged'          => $currentPaged,
+            /*Change paged to a number to see it working on the first page.*/
         ];
         $objectsQuery = new WP_Query( $args );
+
         ?>
 		<?php if ( $objectsQuery->have_posts() ) : ?>
-
-			<?php /* Start the Loop */ ?>
 			<?php while ( $objectsQuery->have_posts() ) : $objectsQuery->the_post(); ?>
+				<?php do_action('wpre_blog_layout'); ?>
+			<?php endwhile;
 
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 */
-					do_action('wpre_blog_layout');
-
-                    wp_reset_postdata();
-				?>
-
-			<?php endwhile; ?>
-
-			<?php
-            pagination_nav($objectsQuery); ?>
+            echo paginate_links([
+                'total' => $objectsQuery->max_num_pages
+            ]); ?>
 
 		<?php else : ?>
 
