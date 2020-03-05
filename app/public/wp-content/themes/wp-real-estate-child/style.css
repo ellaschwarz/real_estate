@@ -1,5 +1,5 @@
 /*
- Theme Name:   Placeholder
+ Theme Name:   HODOOR
  Template:     wp-real-estate
  Version:      1.0.0
 */
@@ -74,7 +74,7 @@
 /* ALL OBJECTS ON ALL CATEGORY PAGES */
 
 .post {
-    
+
     height: 340px;
     position: relative;
     width: 90%;
@@ -310,12 +310,12 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 .selectBox {
     position: relative;
   }
-  
+
   .selectBox select {
     width: 100%;
     font-weight: bold;
   }
-  
+
   .overSelect {
     position: absolute;
     left: 0;
@@ -323,16 +323,16 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     top: 0;
     bottom: 0;
   }
-  
+
   #checkboxes {
     display: none;
     border: 1px #dadada solid;
   }
-  
+
   #checkboxes label {
     display: block;
   }
-  
+
   #checkboxes label:hover {
     background-color: #1e90ff;
   }
