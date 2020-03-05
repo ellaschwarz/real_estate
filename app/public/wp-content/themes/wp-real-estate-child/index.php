@@ -17,17 +17,6 @@ get_header(); ?>
 		<?php if (is_home() ) : ?>
 			<div class="col-md-12 index-title"><div class="section-title title-font"><?php _e('Latest Listings','wp-real-estate'); ?></div></div>
 		<?php endif; ?>
-        <?php
-        /*
-        $currentPaged = get_query_var('paged');
-        $args = [
-            'post_type'      => 'objects',
-            'posts_per_page' => 5,
-            'paged'          => $currentPaged,
-        ];
-        $objectsQuery = new WP_Query( $args );
-        */
-        ?>
 		<?php if ( have_posts() ) : ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php do_action('wpre_blog_layout'); ?>
