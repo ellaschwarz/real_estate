@@ -69,7 +69,7 @@ function homepage_main_query( $query ) {
 
     //Check if the query is performed on the homepage
     if(is_home()){
-      $query->set('posts_per_page', 6);
+      $query->set('posts_per_page', 5);
       $query->set('post_type', 'objects');
     }
   }
