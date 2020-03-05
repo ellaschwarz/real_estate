@@ -337,3 +337,9 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     background-color: primary;
     width: 100%;
 }
+.pagination-category{
+    display: flex !important;
+    flex-direction: row-reverse;
+    justify-content:space-between;
+    margin: 20px;
+}

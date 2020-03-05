@@ -157,11 +157,7 @@ $propSearchQuery = new WP_Query($p_args);
         <?php endwhile;?>
 
         <?php wpre_pagination();?>
-        <?php pagination_nav($propSearchQuery); ?>
-        <?php 
-            next_posts_link( 'Next Entries', $propSearchQuery->max_num_pages );
-            previous_posts_link( 'Previous Entries' );
-        ?>
+       
         <?php else: ?>
         <div class='search-info'>
         <?php _e('No Properties were found with specified parameters. Please search using different parameters.', 'wp-real-estate')?>

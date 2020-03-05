@@ -11,11 +11,14 @@ get_header(); ?>
 
 	<div id="primary" class="content-areas <?php apply_filters('wpre_primary-width','wpre_primary_class') ?>">
 		<main id="main" class="site-main" role="main">
-		<?php 
+			<?php ($tag = get_queried_object()); 
+
 		$args = [
-        'post__in' => $object_id,
-        'post_type' => 'objects',
-    ];
+		'post_type' => 'objects', 
+  		'posts_per_page' => -1, 
+		'taxonomy' => 'post_tag',
+		'tag' => $tag->data->slug,
+	];
 
 		$object = new WP_query($args);
 		
