@@ -1,8 +1,13 @@
 /*
- Theme Name:   Placeholder
+ Theme Name:   HODOOR
  Template:     wp-real-estate
  Version:      1.0.0
 */
+
+#masthead {
+    box-shadow: 3px 3px 3px rgba(92, 91, 91, 0.6);
+    margin-bottom: 10px;
+}
 
 .cards_group {
     display: grid;
@@ -30,7 +35,7 @@
     margin-bottom: 0px;
 }
 
-/* OBJECTS */
+/* SINGLE OBJECTS */
 
 .main_container {
     display: grid;
@@ -63,12 +68,13 @@
 
 }
 
-/* OBJECTS */
+/* SINGLE OBJECTS */
 
-/* ALL OBJECTS ON CATEGORY PAGES */
+
+/* ALL OBJECTS ON ALL CATEGORY PAGES */
 
 .post {
-    
+
     height: 340px;
     position: relative;
     width: 90%;
@@ -101,7 +107,7 @@
 .selected_post{
     border: 1px solid gray;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
 }
 

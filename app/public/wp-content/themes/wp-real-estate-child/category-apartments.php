@@ -3,43 +3,37 @@
 Template Name: All apartments
 
 */
-
-
 ?>
 
 <?php echo get_header(); ?>
 
-
-
 <h1> <?php echo get_cat_name(3); ?> </h1>
-
 
 <?php
 
 global $paged;
 
-
 $args = [
      'post__in' => $object_id,
      'post_type' => 'objects',
-     //'posts_per_page' => 5, 
-     'category_name' => 'apartments', // get posts by category name
-     'paged' => $paged
+     'posts_per_page' => 1,
+     'category_name' => 'apartments',
+     'meta_key' => 'selected',
+     'meta_value' => 'Yes'
  ];
 
  $object = new WP_query($args);
-
 
 if ($object ->have_posts()) : ?>
          
      <?php while ($object ->have_posts()) :
             $object ->the_post();
             $selected = get_post_meta(get_the_ID(), 'selected', true); ?>
-                <?php if ($selected === "Yes") : ?>
-                       <?php for ($i=0; $i<1; $i++) { ?>
+             
+               
                 <div class="selected_post"> 
                      <div class="carousel_category">
-                            <?php the_content(); ?>
+                     <a href="<?php the_permalink(); ?>"><?php the_content(); ?></a>
                 </div>
                 <div class="entry">	
                           <div class="title_area_city">
@@ -54,11 +48,25 @@ if ($object ->have_posts()) : ?>
                             <?php wp_reset_postdata(); ?>
                      </div>
                 </div>
-                       <?php };
-                endif;
+                <?php
      endwhile;
 endif?>
 
+
+
+
+<?php
+$args2 = [
+     'post__in' => $object_id,
+     'post_type' => 'objects',
+     'posts_per_page' => 4,
+     'category_name' => 'apartments',
+     'paged' => $paged
+ ];
+
+ $object = new WP_query($args2);
+
+?>
 
 <script src="https://kit.fontawesome.com/3a12e18fd4.js" crossorigin="anonymous"></script>
 
@@ -67,10 +75,11 @@ if ($object ->have_posts()) : ?>
      <?php while ($object ->have_posts()) :
             $object ->the_post();
             $selected = get_post_meta(get_the_ID(), 'selected', true); ?>
-                <?php if ($selected === "No") : ?>     
+                     
+  
    <div class="post"> 
         <div class='photo_category'>
-                       <?php the_post_thumbnail(array(512, 340)); ?>
+        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(array(512, 340)); ?></a>
       </div>
       <div class="entry_post">                                 
            <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -83,11 +92,13 @@ if ($object ->have_posts()) : ?>
                        <?php wp_reset_postdata(); ?>
      </div>
  </div>
-                       <?php
-                endif;
+               <?php
      endwhile;
-     pagination_nav($object);
-endif; ?>
+     wp_reset_postdata();
+endif;
+     pagination_nav($object); ?>
+
+   <?php wp_count_posts(); ?>
 
 <div style = "clear:both"></div>	
 <?php get_footer(); ?>

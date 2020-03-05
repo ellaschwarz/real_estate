@@ -10,30 +10,24 @@
  *
  * @package wpre
  */
-
 get_header(); ?>
 
 	<div id="primary" class="content-areas <?php apply_filters('wpre_primary-width','wpre_primary_class') ?>">
 		<main id="main" class="site-main <?php apply_filters('wpre_main-class', 'wpre_get_main_class'); ?>" role="main">
 		<?php if (is_home() ) : ?>
 			<div class="col-md-12 index-title"><div class="section-title title-font"><?php _e('Latest Listings','wp-real-estate'); ?></div></div>
-		<?php endif; ?>	
+		<?php endif; ?>
 		<?php if ( have_posts() ) : ?>
-
-			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
+				<?php do_action('wpre_blog_layout'); ?>
+			<?php endwhile;
+            wp_reset_postdata();
 
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 */
-					do_action('wpre_blog_layout'); 
-					
-				?>
-
-			<?php endwhile; ?>
-
-			<?php 
-			pagination_nav($object); ?>
+            the_posts_pagination( [
+	               'mid_size'  => 2,
+	               'prev_text' => __( 'Previous', 'wp-real-estate' ),
+	               'next_text' => __( 'Next', 'wp-real-estate' ),
+                     ] ); ?>
 
 		<?php else : ?>
 

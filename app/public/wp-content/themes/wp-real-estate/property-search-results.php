@@ -24,7 +24,7 @@ get_sidebar('left');?>
         <?php
 $p_args = array(
     'post_type' => 'objects', 
-    'posts_per_page' => 5, 
+    'posts_per_page' => -1, 
     'paged' => $paged,
     // your CPT
     // looks into everything with the keyword from your 'name field'
