@@ -22,8 +22,6 @@ function estate_widgets(){
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',
     ]);
-}
-function estate_widgets_broker(){
     register_sidebar([
         'name'          => __( 'Group A broker sidebar', 'real_estate' ),
         'id'            => 'estate_sidebar_broker',
@@ -34,20 +32,18 @@ function estate_widgets_broker(){
         'after_title'   => '</h4>',
     ]);
 }
-function estate_widgets_map(){
-    register_sidebar([
-        'name'          => __( 'Group A sidebar for map', 'real_estate' ),
-        'id'            => 'estate_sidebar_search_map',
-        'description'   => __( 'Sidebar for Map', 'real_estate' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4 class="widgettitle">',
-        'after_title'   => '</h4>',
-    ]);
-}
+register_sidebar([
+    'name'          => __( 'Group A sidebar for map', 'real_estate' ),
+    'id'            => 'estate_sidebar_search_map',
+    'description'   => __( 'Sidebar for Map', 'real_estate' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4 class="widgettitle">',
+    'after_title'   => '</h4>',
+]);
+
 add_action('widgets_init','estate_widgets');
-add_action('widgets_init','estate_widgets_broker');
-add_action('widgets_init','estate_widgets_map');
+
 
 function pagination_nav($wp_query) { ?>
         <nav class="pagination-category" role="navigation">
@@ -83,5 +79,16 @@ add_action( 'pre_get_posts', 'homepage_main_query' );
 //         $q->set( 'posts_per_page', 5 );
 
 //     }
+//Sort by in search result 
+function wpse139657_orderby($query){
+    if( isset($_GET['orderby']) ){
+        $order = $_GET['order']  or 'DESC';
+        $query->set('orderby', 'meta_value_num');
+        $query->set('meta_type', 'numeric');
+        $query->set('meta_key', $_GET['orderby']);
+        $query->set('order',  $order);
+    }
+}
 
+add_filter('pre_get_posts','wpse139657_orderby');
  ?>

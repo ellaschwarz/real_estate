@@ -17,62 +17,60 @@ $_type = $_GET['listing_type'] != '' ? esc_html($_GET['listing_type']) : '';
 $_list = explode(',',$_type);
 get_header();
 global $paged;
+global $wp;
 get_sidebar('left');?>
 <div id="primary" class="content-area <?php apply_filters('wpre_primary-width', 'wpre_primary_class')?>">
     <main id="main" class="site-main" role="main">
 
-        <?php
-$p_args = array(
-    'post_type' => 'objects', 
-    'posts_per_page' => -1, 
-    'paged' => $paged,
-    // your CPT
-    // looks into everything with the keyword from your 'name field'
-    'meta_query' => array(
-        'relation' => 'AND',
-        array(
-            'key' => 'rooms',
-            'type' => 'numeric',
-            'value' => array($_minbed,$_maxbed),
-            'compare' => 'BETWEEN',
+    <?php
+        $p_args = array(
+        'post_type' => 'objects', 
+        'posts_per_page' => -1, 
+        'paged' => $paged,
+        'meta_query' => array(
+            'relation' => 'AND',
+                array(
+                'key' => 'rooms',
+                'type' => 'numeric',
+                'value' => array($_minbed,$_maxbed),
+                'compare' => 'BETWEEN',
+                ),
+                array(array(
+                'key' => 'address',
+                'value' => $_name,
+                'compare' => 'LIKE'
+            ),'relation' => 'OR',
+            array(
+                'key' => 'area',
+                'value' => $_name,
+                'compare' => 'LIKE'
+            ),'relation' => 'OR',
+            array(
+                'key' => 'city',
+                'value' => $_name,
+                'compare' => 'LIKE'
+            )),
+            array(
+                'key' => 'price',
+                'type' => 'numeric',
+                'value' => array($_cmin,$_cmax),
+                'compare' => 'BETWEEN',
+            ),
+        ), 
+        'tax_query' => array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'post_tag',
+                'field' => 'slug',
+                'terms' => $_list,
+                'include_children' => true,
+                'operator' => 'AND',
+            ),
         ),
-        array(array(
-            'key' => 'address',
-            'value' => $_name,
-            'compare' => 'LIKE'
-        ),'relation' => 'OR',
-        array(
-            'key' => 'area',
-            'value' => $_name,
-            'compare' => 'LIKE'
-        ),'relation' => 'OR',
-        array(
-            'key' => 'city',
-            'value' => $_name,
-            'compare' => 'LIKE'
-        )),
-        array(
-            'key' => 'price',
-            'type' => 'numeric',
-            'value' => array($_cmin,$_cmax),
-            'compare' => 'BETWEEN',
-        ),
-    ), 
-    'tax_query' => array(
-        'relation' => 'AND',
-        array(
-            'taxonomy' => 'post_tag',
-            'field' => 'slug',
-            'terms' => $_list,
-            'include_children' => true,
-            'operator' => 'AND',
-        ),
-    ),
-);
+    );
 
-$propSearchQuery = new WP_Query($p_args);
-
-?>
+    $propSearchQuery = new WP_Query($p_args);
+    $current_url = add_query_arg(array(($_GET)), $wp->request);  ?>
 
         <?php if ($propSearchQuery->have_posts()): ?>
 
@@ -80,7 +78,17 @@ $propSearchQuery = new WP_Query($p_args);
             <h1 class="page-title"><?php _e('Search Results', 'wp-real-estate');?></h1>
         </header><!-- .page-header -->
 
-        <?php /* Start the Loop */?>
+        <form class='sortby-form'>
+        <label>Sort by</label>
+        <select name='sort-posts' id='sortbox' onchange="document.location.href=location.href+'&'+this.options[this.selectedIndex].value;">
+            <option value=""></option>
+            <option value="orderby=price&order=DESC">Most Expensive</option>
+            <option value="orderby=price&order=ASC">Least Expensive</option>
+            <option value="orderby=m²&order=DESC">Largest</option>
+            <option value="orderby=m²&order=ASC">Smallest</option>
+            <option value="orderby=rooms&order=ASC">Rooms</option>
+        </select>
+        </form>
         <?php while ($propSearchQuery->have_posts()): $propSearchQuery->the_post();?>
         <article id="post-<?php the_ID();?>" <?php post_class();?>>
             <div class="grid2-3">
@@ -106,42 +114,42 @@ $propSearchQuery = new WP_Query($p_args);
                         <div class='col-md-7'>
                             <div class="container-fluid info_container">
                                <div class='row'>
-                                    <p class="col-md-6 object_td">  <strong><?php _e('City: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td">  <strong><?php _e('City:');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('city');?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td">  <strong><?php _e('Area: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td">  <strong><?php _e('Area:');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('area');?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td"> <strong><?php _e('Rooms: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td"> <strong><?php _e('Rooms:');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('rooms');?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td"> <strong><?php _e('m²: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td"> <strong><?php _e('m²:');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('m²');?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td"><strong> <?php _e('Price: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td"><strong> <?php _e('Price:');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('price');?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td"><strong> <?php _e('Inspection times: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td"><strong> <?php _e('Inspection times: ');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('inspection_times');?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td"><strong><?php _e('Category: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td"><strong><?php _e('Category: ');?></strong> </p>
                                     <p class="col-md-6"> <?php the_category(', '); // Separated by commas ?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td"><strong><?php _e('Tags: ', 'html5blank');?></strong> </p>
+                                    <p class="col-md-6 object_td"><strong><?php _e('Tags: ');?></strong> </p>
                                     <p class="col-md-6"> <?php the_tags(''); // Separated by commas ?></p>
                                 </div>
                             
@@ -160,7 +168,7 @@ $propSearchQuery = new WP_Query($p_args);
        
         <?php else: ?>
         <div class='search-info'>
-        <?php _e('No Properties were found with specified parameters. Please search using different parameters.', 'wp-real-estate')?>
+            <?php _e('No Properties were found with specified parameters. Please search using different parameters.', 'wp-real-estate')?>
         </div>
         <?php endif;?>
 
