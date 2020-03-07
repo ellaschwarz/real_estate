@@ -5,6 +5,8 @@ Template Name: All posts
 ?>
 
 <?php get_header();
+get_template_part( 'object', 'searchform' );
+
 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = [
@@ -13,12 +15,15 @@ $args = [
     'paged' => $paged
  ];
 
- $object = new WP_query($args); ?>
+ $object = new WP_query($args);
+$current_url = add_query_arg(array(($_GET)), $wp->request);  ?>
+
 
  <script src="https://kit.fontawesome.com/3a12e18fd4.js" crossorigin="anonymous"></script>
 
 
 <?php  if ($object ->have_posts()) : ?>
+
      <?php while ($object ->have_posts()) :
             $object ->the_post(); ?>
         <div class="post"> 

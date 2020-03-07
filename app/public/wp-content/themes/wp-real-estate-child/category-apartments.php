@@ -5,7 +5,8 @@ Template Name: All apartments
 */
 ?>
 
-<?php echo get_header(); ?>
+<?php echo get_header(); 
+get_template_part( 'object', 'searchform' );?>
 
 <h1> <?php echo get_cat_name(3); ?> </h1>
 

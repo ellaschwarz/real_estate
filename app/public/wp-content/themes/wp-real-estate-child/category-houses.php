@@ -4,7 +4,8 @@ Template Name: All posts
 */
 ?>
 
-<?php get_header();?>
+<?php get_header();
+get_template_part( 'object', 'searchform' );?>
 
 <h1> <?php echo get_cat_name(2); ?> </h1>
 
