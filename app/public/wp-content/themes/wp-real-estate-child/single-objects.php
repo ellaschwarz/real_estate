@@ -32,6 +32,12 @@ while (have_posts()) :
     $sqm = get_post_meta(get_the_ID(), 'm²', true);
     $rooms = get_post_meta(get_the_ID(), 'rooms', true);
     $inspection_times = get_post_meta(get_the_ID(), 'inspection_times', true);
+    $broker = get_post_meta(get_the_ID(), 'broker', true);
+
+//     print_r($broker);
+//    // echo $broker[0];
+//     print_r($broker[0][1]);
+//     var_dump($broker);
 
 
     $args = [
@@ -72,6 +78,8 @@ while (have_posts()) :
    echo '<td>' . $rooms . '</td></tr>';
    echo '<tr><td class="object_td"> Inspection Times: ' . '</td>';
    echo '<td> ' . $inspection_times . '</td></tr>';
+//    echo '<tr><td class="object_td"> Broker: ' . '</td>';
+//    echo '<td> ' . $broker . '</td></tr>';
     ?>
       </table>
      </div> <!-- info_container -->

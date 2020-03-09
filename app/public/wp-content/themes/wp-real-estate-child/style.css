@@ -39,7 +39,7 @@
 
 .main_container {
     display: grid;
-    grid-template-rows: 40px 20px 1fr;
+    grid-template-rows: 10px 20px 1fr;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 30px;
     border-top: 2px solid rgb(137, 137, 143);
@@ -51,14 +51,19 @@
     grid-column: 1/2;
     font-size: 16px;
     letter-spacing: 1px;
+    border-bottom: 1px solid rgb(137, 137, 143);
+    border-top: 1px solid rgb(137, 137, 143);
+    padding: 10px;
+
 
 }
 
 .content_container {
     grid-row: 3/4;
     grid-column: 2/3;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 10px;
+    padding-right: 10px;
 }
 
 .info_container .object_td{

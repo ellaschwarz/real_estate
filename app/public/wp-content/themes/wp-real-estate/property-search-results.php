@@ -113,14 +113,13 @@ get_sidebar('left');?>
                         <!-- post details -->
                         <div class='col-md-7'>
                             <div class="container-fluid info_container">
-                               <div class='row'>
-                                    <p class="col-md-6 object_td">  <strong><?php _e('City:');?></strong> </p>
-                                    <p class="col-md-6"><?php the_field('city');?></p>
+                                <div class='row'>
+                                <p>  <?php the_field('area');?>, <?php the_field('city');?></p>
                                 </div>
 
                                 <div class='row'>
-                                    <p class="col-md-6 object_td">  <strong><?php _e('Area:');?></strong> </p>
-                                    <p class="col-md-6"><?php the_field('area');?></p>
+                                    <p class="col-md-6 object_td"><strong> <?php _e('Price:');?></strong> </p>
+                                    <p class="col-md-6"><?php the_field('price');?> kr</p>
                                 </div>
 
                                 <div class='row'>
@@ -131,16 +130,6 @@ get_sidebar('left');?>
                                 <div class='row'>
                                     <p class="col-md-6 object_td"> <strong><?php _e('m²:');?></strong> </p>
                                     <p class="col-md-6"><?php the_field('m²');?></p>
-                                </div>
-
-                                <div class='row'>
-                                    <p class="col-md-6 object_td"><strong> <?php _e('Price:');?></strong> </p>
-                                    <p class="col-md-6"><?php the_field('price');?></p>
-                                </div>
-
-                                <div class='row'>
-                                    <p class="col-md-6 object_td"><strong> <?php _e('Inspection times: ');?></strong> </p>
-                                    <p class="col-md-6"><?php the_field('inspection_times');?></p>
                                 </div>
 
                                 <div class='row'>
